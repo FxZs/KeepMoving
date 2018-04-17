@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
         //git测试2018年4月17日14:04:26s  客户端提交测试
         //Android 提交测试  Android本地提交测试
         //Android提交测试
-        //家里提交测试
         setContentView(R.layout.activity_main);
     }
 }
