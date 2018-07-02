@@ -2,8 +2,16 @@
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+import com.fx.view.LoginViewew;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,LoginViewew{
+    private EditText username;
+    private EditText userpwd;
+    private Button loginbtn;
 //2018年4月17日15:31:33
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +21,33 @@ public class MainActivity extends AppCompatActivity {
         //Android提交测试/***/
         //公司提交测试
         setContentView(R.layout.activity_main);
+        initview();
+    }
+
+    private void initview() {
+        username=findViewById(R.id.username);
+        userpwd=findViewById(R.id.userpwd);
+        loginbtn=findViewById(R.id.btn);
+        loginbtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public String getUsername() {
+        return username.getText().toString().trim();
+    }
+
+    @Override
+    public String getPwd() {
+        return userpwd.getText().toString().trim();
+    }
+
+    @Override
+    public void ToastShow(String msg) {
+
     }
 }
