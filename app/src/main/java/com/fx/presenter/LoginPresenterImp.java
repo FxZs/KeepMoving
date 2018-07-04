@@ -18,7 +18,9 @@ public class LoginPresenterImp implements LoginContract.LoginPresenter {
     }
 
     public LoginPresenterImp(LoginContract.LoginView view) {
+
         this.view = view;
+        view.setPresenter(this);
     }
 
     @Override

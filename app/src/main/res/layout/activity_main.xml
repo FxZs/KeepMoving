@@ -5,29 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.fx.keepmoving.MainActivity">
-
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/login_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:hint="请输入用户名"/>
-        <EditText
-            android:id="@+id/userpwd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="请输入密码"
-            android:layout_marginTop="20dp"/>
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:text="登录"/>
-    </LinearLayout>
+        android:layout_height="match_parent">
+      <Button
+          android:id="@+id/btnlogin"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="登录"
+
+           />
+    </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>
+
