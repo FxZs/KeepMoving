@@ -19,6 +19,7 @@ package com.fx.base;
 /**抽象，继承，多态
  * 这个是Presenter的基础类，可要可不要，这里是提取presenter中都要用到的方法
  * 所以实现BasePresenter的都有了  void start(); 方法。就不需要再单独的每个presenter中都写void start()
+ * 不要复制粘贴，手敲
  */
 public interface BasePresenter {
     //这个start是为了与acivity的onstart（页面的生命周期绑定的具体看实际需要）
