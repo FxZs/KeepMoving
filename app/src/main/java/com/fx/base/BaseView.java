@@ -23,6 +23,9 @@ package com.fx.base;
  *
  * T代表Object ，意思就是所有的对象都可以当做参数setPresenter 传进来，这个能懂？嗯
  *  这个是多态的一个体现，
+ *
+ *  V 负责收集数据和展示数据，事件触发等。 M  封装了业务逻辑的属性集合  P 负责具体的逻辑处理
+ *           这个你是知道的吧？嗯
  */
 public interface BaseView<T> {
     //注入presenter

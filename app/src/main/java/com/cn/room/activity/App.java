@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 
 import com.cn.room.Dao.UserDatabase;
+import com.com.tworoom.source.Tworoomdatabase;
 
 /**
  * Created by zhangpingzhen on 2018/7/10.
@@ -14,7 +15,7 @@ import com.cn.room.Dao.UserDatabase;
 public class App extends Application{
     private static App instance;
     private static UserDatabase database;
-
+private static Tworoomdatabase tworoomdatabase;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -23,6 +24,7 @@ public class App extends Application{
 
     private void initDb() {
         database= Room.databaseBuilder(this,UserDatabase.class,"database_name").build();
+   tworoomdatabase=Room.databaseBuilder(this,Tworoomdatabase.class,"twodatabase_name").build();
     }
 
     public static App getInstance() {
@@ -31,5 +33,9 @@ public class App extends Application{
 
     public static UserDatabase getDatabase() {
         return database;
+    }
+
+    public static Tworoomdatabase getTworoomdatabase() {
+        return tworoomdatabase;
     }
 }
