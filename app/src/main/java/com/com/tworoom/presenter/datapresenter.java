@@ -14,4 +14,5 @@ public interface datapresenter extends BasePresenter{
     //想想你现在需要做的事情。将你的收集到的数据插入到数据库，然后你又做了界面，就需要将数据读出来
     //然后更新界面。
     void  totaltime(MyUser usertime);
+    void  dudatashuju();
 }

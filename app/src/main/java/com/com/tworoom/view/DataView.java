@@ -3,6 +3,8 @@ package com.com.tworoom.view;
 import com.com.tworoom.MyUser;
 import com.fx.base.BaseView;
 
+import java.util.List;
+
 /**
  * Created by zhangpingzhen on 2018/7/11.
  * 想想view需要做的事情  1.收集数据 2.显示出来
@@ -20,5 +22,5 @@ public interface DataView extends BaseView{
 //    public String stopdata;
 //    public String alldata;
     //是不是要显示这三个属性？嗯  这三个属性是不是再myuser 里面。嗯 直接通过get方法拿
-    void showData(MyUser time);//这个就是显示你收集到的数据  或者说是界面上需要显示的东西
+    void showData(List<MyUser> time);//这个就是显示你收集到的数据  或者说是界面上需要显示的东西
 }//这块不是显示的是时间么   时间

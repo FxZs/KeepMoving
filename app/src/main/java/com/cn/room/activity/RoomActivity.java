@@ -1,8 +1,11 @@
 package com.cn.room.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cn.room.User;
@@ -10,6 +13,7 @@ import com.cn.room.UserRoomDateSource;
 import com.cn.room.presenter.PresenterImp;
 import com.cn.room.presenter.UserPresenter;
 import com.cn.room.view.UserView;
+import com.com.tworoom.TwoRoomActivity;
 
 
 /**
@@ -18,9 +22,9 @@ import com.cn.room.view.UserView;
 
 public class RoomActivity extends AppCompatActivity {
     private TextView starttime,stoptime,counttime;
-     private UserPresenter presenter;
      private PresenterImp presenterImp;
      private User user;
+     private Button btnxiayibu;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,14 @@ public class RoomActivity extends AppCompatActivity {
         starttime=findViewById(R.id.starttime);
         stoptime=findViewById(R.id.stoptime);
         counttime=findViewById(R.id.counttime);
+        btnxiayibu=findViewById(R.id.btnxiayibu);
+        btnxiayibu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(RoomActivity.this,TwoRoomActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -50,7 +62,7 @@ public class RoomActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        presenter.stoptime(user);
+        presenterImp.stoptime(user);
 
     }
 

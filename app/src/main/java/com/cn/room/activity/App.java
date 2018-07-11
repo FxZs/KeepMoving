@@ -23,8 +23,8 @@ private static Tworoomdatabase tworoomdatabase;
     }
 
     private void initDb() {
-        database= Room.databaseBuilder(this,UserDatabase.class,"database_name").build();
-   tworoomdatabase=Room.databaseBuilder(this,Tworoomdatabase.class,"twodatabase_name").build();
+        database= Room.databaseBuilder(this,UserDatabase.class,"database_name").allowMainThreadQueries().build();
+   tworoomdatabase=Room.databaseBuilder(this,Tworoomdatabase.class,"twodatabase_name.db").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {

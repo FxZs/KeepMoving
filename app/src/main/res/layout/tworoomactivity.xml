@@ -27,5 +27,12 @@
             android:layout_marginTop="15dp"
             android:paddingLeft="20dp"
             android:text="总访问时间"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyview"
+            android:layout_width="match_parent"
+            android:layout_height="302dp">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
