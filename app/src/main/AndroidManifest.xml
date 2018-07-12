@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="com.fx.keepmoving.MainActivity"></activity>
         <activity android:name="com.com.tworoom.TwoRoomActivity"/>
+        <activity android:name="com.com.threeday.ThreeDataActivity"/>
+        <activity android:name="com.com.fourday.FourActivity"/>
     </application>
 
 </manifest>

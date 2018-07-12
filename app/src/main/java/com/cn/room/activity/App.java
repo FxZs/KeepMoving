@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 
 import com.cn.room.Dao.UserDatabase;
+import com.com.fourday.base.AccessTimeBase;
+import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
 
 /**
@@ -16,6 +18,8 @@ public class App extends Application{
     private static App instance;
     private static UserDatabase database;
 private static Tworoomdatabase tworoomdatabase;
+private static ThreeDataBase threeDataBase;
+private static AccessTimeBase accessTimeBase;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,6 +29,8 @@ private static Tworoomdatabase tworoomdatabase;
     private void initDb() {
         database= Room.databaseBuilder(this,UserDatabase.class,"database_name").allowMainThreadQueries().build();
    tworoomdatabase=Room.databaseBuilder(this,Tworoomdatabase.class,"twodatabase_name.db").allowMainThreadQueries().build();
+        threeDataBase=Room.databaseBuilder(this,ThreeDataBase.class,"threedata.db").allowMainThreadQueries().build();
+   accessTimeBase=Room.databaseBuilder(this,AccessTimeBase.class,"four_data.db").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {
@@ -37,5 +43,13 @@ private static Tworoomdatabase tworoomdatabase;
 
     public static Tworoomdatabase getTworoomdatabase() {
         return tworoomdatabase;
+    }
+
+    public static ThreeDataBase getThreeDataBase() {
+        return threeDataBase;
+    }
+
+    public static AccessTimeBase getAccessTimeBase() {
+        return accessTimeBase;
     }
 }

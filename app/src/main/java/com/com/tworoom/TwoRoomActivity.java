@@ -1,14 +1,18 @@
 package com.com.tworoom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cn.room.UserRoomDateSource;
 import com.cn.room.activity.R;
+import com.com.threeday.ThreeDataActivity;
 import com.com.tworoom.presenter.Datapresenterimp;
 import com.com.tworoom.source.MyUserLocaldatasource;
 import com.com.tworoom.view.DataBaseAdapter;
@@ -28,6 +32,7 @@ public class TwoRoomActivity extends AppCompatActivity implements DataView{
     private RecyclerView recyclerView;
     private List<MyUser> lists=new ArrayList<>();
     private DataBaseAdapter adapter;
+    private Button btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +47,14 @@ public class TwoRoomActivity extends AppCompatActivity implements DataView{
         stopdata=findViewById(R.id.stoptime);
         alldata=findViewById(R.id.counttime);
         recyclerView=findViewById(R.id.recyview);
+        btn=findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mintent=new Intent(TwoRoomActivity.this, ThreeDataActivity.class);
+                startActivity(mintent);
+            }
+        });
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         //设置RecyclerView 布局
         recyclerView.setLayoutManager(layoutManager);

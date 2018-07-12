@@ -27,11 +27,16 @@
             android:layout_marginTop="15dp"
             android:paddingLeft="20dp"
             android:text="总访问时间"/>
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="下一步"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyview"
             android:layout_width="match_parent"
-            android:layout_height="302dp">
+            android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
