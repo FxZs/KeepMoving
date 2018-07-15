@@ -13,6 +13,9 @@ import com.cn.room.UserRoomDateSource;
 import com.cn.room.presenter.PresenterImp;
 import com.cn.room.presenter.UserPresenter;
 import com.cn.room.view.UserView;
+import com.com.fiveday.FivewActivity;
+import com.com.fourday.FourActivity;
+import com.com.threeday.ThreeDataActivity;
 import com.com.tworoom.TwoRoomActivity;
 
 
@@ -20,11 +23,11 @@ import com.com.tworoom.TwoRoomActivity;
  * Created by zhangpingzhen on 2018/7/10.
  */
 
-public class RoomActivity extends AppCompatActivity {
+public class RoomActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView starttime,stoptime,counttime;
      private PresenterImp presenterImp;
      private User user;
-     private Button btnxiayibu;
+     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +46,15 @@ public class RoomActivity extends AppCompatActivity {
         stoptime=findViewById(R.id.stoptime);
         counttime=findViewById(R.id.counttime);
         btnxiayibu=findViewById(R.id.btnxiayibu);
-        btnxiayibu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(RoomActivity.this,TwoRoomActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        tworoombtn=findViewById(R.id.Tworoombtn);
+        threeroombtn=findViewById(R.id.Threeroombtn);
+        fourroombtn=findViewById(R.id.Fourroombtn);
+        fiveroombtn=findViewById(R.id.Fiveroombtn);
+        tworoombtn.setOnClickListener(this);
+        threeroombtn.setOnClickListener(this);
+        fourroombtn.setOnClickListener(this);
+        fiveroombtn.setOnClickListener(this);
     }
 
     @Override
@@ -67,4 +72,25 @@ public class RoomActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.Tworoombtn:
+                Intent intent=new Intent(RoomActivity.this,TwoRoomActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.Threeroombtn:
+                Intent intenta=new Intent(RoomActivity.this,ThreeDataActivity.class);
+                startActivity(intenta);
+                break;
+            case R.id.Fourroombtn:
+                Intent intentb=new Intent(RoomActivity.this,FourActivity.class);
+                startActivity(intentb);
+                break;
+            case R.id.Fiveroombtn:
+                Intent intentc=new Intent(RoomActivity.this,FivewActivity.class);
+                startActivity(intentc);
+                break;
+        }
+    }
 }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.cn.room.activity.NoDoubleClickListener;
 import com.cn.room.activity.R;
 import com.com.fourday.FourActivity;
 import com.com.threeday.adapter.DataAdapter;
@@ -45,13 +46,7 @@ public class ThreeDataActivity extends AppCompatActivity implements DataView{
 
         recyclerView=findViewById(R.id.three_view);
         three_btn=findViewById(R.id.three_btn);
-        three_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mIntent=new Intent(ThreeDataActivity.this, FourActivity.class);
-                startActivity(mIntent);
-            }
-        });
+
     }
 
 
