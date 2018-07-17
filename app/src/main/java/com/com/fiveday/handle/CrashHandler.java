@@ -27,17 +27,17 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
 
         this.mContext=context;
         // 获取默认异常处理器
-        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+       /* mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 
         // 将此类设为默认异常处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
-        handleDao= App.getHandleBaseView().handleDao();
+        handleDao= App.getHandleBaseView().handleDao();*/
     }
 
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-        Log.i("uncaughtException",t.getName()+e.getMessage());
+  /*      Log.i("uncaughtException",t.getName()+e.getMessage());
             if (mDefaultHandler != null) {
 //                mDefaultHandler.uncaughtException(t, e);
                 HandleEntity handleEntity=new HandleEntity();
@@ -53,7 +53,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(0);
 
-        }
+        }*/
     }
 
 
