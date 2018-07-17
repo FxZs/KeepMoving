@@ -11,5 +11,4 @@ import java.util.List;
 public interface AccessTimeSource {
     void accountTime(AccessTime accessTime);
     List<AccessTime> readDataTime();
-
 }

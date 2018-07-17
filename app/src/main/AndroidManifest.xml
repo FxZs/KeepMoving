@@ -23,6 +23,7 @@
         <activity android:name="com.com.tworoom.TwoRoomActivity"/>
         <activity android:name="com.com.threeday.ThreeDataActivity"/>
         <activity android:name="com.com.fourday.FourActivity"/>
+        <activity android:name="com.com.fiveday.FivewActivity"/>
     </application>
 
 </manifest>

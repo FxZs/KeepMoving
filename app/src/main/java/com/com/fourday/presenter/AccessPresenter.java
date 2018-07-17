@@ -10,4 +10,5 @@ import com.fx.base.BasePresenter;
 public interface AccessPresenter extends BasePresenter{
     void manageAccessData(AccessTime accessTime);//插入就叫 insert ， P 和dao 要尽量保持一致哦
     void fetchAccessData();
+    void clicktimes(AccessTime accessTime);//点击次数
 }

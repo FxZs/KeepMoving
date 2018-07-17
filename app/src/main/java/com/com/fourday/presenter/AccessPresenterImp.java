@@ -30,6 +30,11 @@ public class AccessPresenterImp implements AccessPresenter{
     }
 
     @Override
+    public void clicktimes(AccessTime accessTime) {
+
+    }
+
+    @Override
     public void start() {
 
     }

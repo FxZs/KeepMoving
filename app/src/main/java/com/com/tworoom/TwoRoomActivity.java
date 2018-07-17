@@ -48,13 +48,7 @@ public class TwoRoomActivity extends AppCompatActivity implements DataView{
         alldata=findViewById(R.id.counttime);
         recyclerView=findViewById(R.id.recyview);
         btn=findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mintent=new Intent(TwoRoomActivity.this, ThreeDataActivity.class);
-                startActivity(mintent);
-            }
-        });
+
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         //设置RecyclerView 布局
         recyclerView.setLayoutManager(layoutManager);
