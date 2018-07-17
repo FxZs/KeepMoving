@@ -7,6 +7,7 @@ import android.content.Context;
 import com.cn.room.Dao.UserDatabase;
 import com.com.fiveday.baseview.ClickBaseView;
 import com.com.fiveday.baseview.HandleBaseView;
+import com.com.fiveday.handle.CrashHandler;
 import com.com.fourday.base.AccessTimeBase;
 import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
@@ -30,6 +31,8 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         initDb();
+        new CrashHandler(this);
+
     }
 
     private void initDb() {
@@ -64,5 +67,9 @@ public class App extends Application{
 
     public static ClickBaseView getClickBaseView() {
         return clickBaseView;
+    }
+
+    public static HandleBaseView getHandleBaseView() {
+        return handleBaseView;
     }
 }
