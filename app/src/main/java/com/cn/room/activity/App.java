@@ -32,7 +32,6 @@ public class App extends Application{
         super.onCreate();
         initDb();
         new CrashHandler(this);
-
     }
 
     private void initDb() {

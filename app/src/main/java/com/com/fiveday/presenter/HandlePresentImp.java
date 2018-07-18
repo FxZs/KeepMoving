@@ -20,12 +20,12 @@ public class HandlePresentImp implements HandlePresenter{
 
     @Override
     public void insertHandlePresenter(HandleEntity handleEntity) {
-            handleLocalSource.insertHandleMsgSource(handleEntity);
+handleLocalSource.insertHandleMsgSource(handleEntity);
     }
 
     @Override
     public void queryHandlePresenter() {
-        handleLocalSource.queryHandleMsgSource();
+handleLocalSource.queryHandleMsgSource();
     }
 
     @Override

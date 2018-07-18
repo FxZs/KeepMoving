@@ -17,6 +17,7 @@ import com.com.fiveday.FivewActivity;
 import com.com.fourday.FourActivity;
 import com.com.threeday.ThreeDataActivity;
 import com.com.tworoom.TwoRoomActivity;
+import com.sixday.SixActivity;
 
 
 /**
@@ -27,7 +28,7 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
     private TextView starttime,stoptime,counttime;
      private PresenterImp presenterImp;
      private User user;
-     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn;
+     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,sixBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
         threeroombtn=findViewById(R.id.Threeroombtn);
         fourroombtn=findViewById(R.id.Fourroombtn);
         fiveroombtn=findViewById(R.id.Fiveroombtn);
+        sixBtn=findViewById(R.id.sixBtn);
+        sixBtn.setOnClickListener(this);
         tworoombtn.setOnClickListener(this);
         threeroombtn.setOnClickListener(this);
         fourroombtn.setOnClickListener(this);
@@ -92,6 +95,10 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Fiveroombtn:
                 Intent intentc=new Intent(RoomActivity.this,FivewActivity.class);
                 startActivity(intentc);
+                break;
+            case R.id.sixBtn:
+                Intent intentd=new Intent(RoomActivity.this, SixActivity.class);
+                startActivity(intentd);
                 break;
         }
     }

@@ -4,11 +4,19 @@
     android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/newfivew_recy"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/fiev_bbttn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:text="点我出现异常"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/newfive_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
 
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

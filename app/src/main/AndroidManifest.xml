@@ -24,6 +24,8 @@
         <activity android:name="com.com.threeday.ThreeDataActivity"/>
         <activity android:name="com.com.fourday.FourActivity"/>
         <activity android:name="com.com.fiveday.FivewActivity"/>
+        <activity android:name="com.com.fiveday.FiveActivity"/>
+        <activity android:name="com.sixday.SixActivity"/>
     </application>
 
 </manifest>
