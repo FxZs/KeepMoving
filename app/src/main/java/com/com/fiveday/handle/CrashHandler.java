@@ -4,55 +4,55 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Looper;
+import android.os.Process;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.cn.room.activity.App;
 import com.cn.room.activity.R;
 import com.com.fiveday.FiveActivity;
+import com.com.fiveday.HandleEntity;
+import com.com.fiveday.dao.HandleDao;
+
+import java.util.Calendar;
 
 /**
  * Created by zhangpingzhen on 2018/7/17.
  */
 
 public class CrashHandler implements Thread.UncaughtExceptionHandler{
-    private Context context;
+    private static CrashHandler sInstance = null;
+    private Thread.UncaughtExceptionHandler mDefaultHandler;
+    private Context mContext;
+    private static String TAG="CrashHandler";
+    private HandleDao handleDao;
     public CrashHandler(Context context){
-        this.context=context;
+
+        this.mContext=context;
+        handleDao= App.getHandleBaseView().handleDao();
+        // 获取默认异常处理器
+        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+        // 将此类设为默认异常处理器
+        Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-
-    }
-    private void showToast(Thread thread) {
-        final Dialog dialog=new Dialog(context);
-        dialog.setContentView(R.layout.dialog_layout);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Looper.prepare();
-                Toast.makeText(context, "程序异常，重新启动", Toast.LENGTH_LONG).show();
-                Looper.loop();
-            }
-        }).start();
-
-        try {
-            thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (mDefaultHandler != null) {
+            mDefaultHandler.uncaughtException(t, e);
+            Log.i(TAG,t.getName()+""+e.getLocalizedMessage());
+            HandleEntity handleEntity=new HandleEntity();
+            handleEntity.setErrorTimes("");
+            handleEntity.setHandleMessage(e.getMessage());
+            handleEntity.setWhichThread(t.getName());
+            handleDao.insertHandleMsg(handleEntity);
         }
-        restartApp();
+        Process.killProcess(Process.myPid());
+        System.exit(0);
     }
 
-    /**
-     * 重启应用
-     */
-    private void restartApp(){
-        Intent intent = new Intent(context,FiveActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-        android.os.Process.killProcess(android.os.Process.myPid());//再此之前可以做些退出等操作
-    }
+
+
 
 }
