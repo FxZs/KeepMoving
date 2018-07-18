@@ -1,0 +1,17 @@
+package com.sixday.dao;
+
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+
+import com.sixday.moudle.AccessEntity;
+
+/**
+ * Created by Administrator on 2018/7/18.
+ */
+@Dao
+public interface SixAccessDao{
+    @Insert
+    void insertSixAccess(AccessEntity accessEntity);
+
+    void querySixAccess();
+}
