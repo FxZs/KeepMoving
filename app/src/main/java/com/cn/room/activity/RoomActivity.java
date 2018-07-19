@@ -79,8 +79,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.Tworoombtn:
-                String a =null;
-                a.toCharArray();
+               /* String a =null;
+                a.toCharArray();*/
                 Intent intent=new Intent(RoomActivity.this,TwoRoomActivity.class);
                 startActivity(intent);
                 break;

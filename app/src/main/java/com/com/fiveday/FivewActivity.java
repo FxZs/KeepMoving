@@ -13,6 +13,7 @@ import com.cn.room.activity.R;
 import com.com.fiveday.adapter.ClickTimesAdapter;
 import com.com.fiveday.presenter.ClickPresentImp;
 import com.com.fiveday.view.ClickView;
+import com.sixday.moudle.ClickEntity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +44,11 @@ public class FivewActivity extends AppCompatActivity implements ClickView{
         five_recyview=findViewById(R.id.five_recyview);
         five_btn=findViewById(R.id.five_btn);
         five_btn.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            protected void onSixClickCach(ClickEntity clickEntity) {
+
+            }
+
             @Override
             protected void onNoDoubleClick(View v) {
 

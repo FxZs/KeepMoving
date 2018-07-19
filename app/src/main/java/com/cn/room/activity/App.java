@@ -11,6 +11,10 @@ import com.com.fiveday.handle.CrashHandler;
 import com.com.fourday.base.AccessTimeBase;
 import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
+import com.sixday.base.SixAccessBase;
+import com.sixday.base.SixClickNumberBase;
+import com.sixday.base.SixHandleBase;
+import com.sixday.handle.SixCrashHandler;
 
 /**
  * Created by zhangpingzhen on 2018/7/10.
@@ -27,11 +31,15 @@ public class App extends Application{
     private static HandleBaseView handleBaseView;
     private Context mContext;
     private static ClickBaseView clickBaseView;
+    private static SixAccessBase sixAccessBase;
+    private  static SixClickNumberBase sixClickBase;
+    private static SixHandleBase sixHandleBase;
     @Override
     public void onCreate() {
         super.onCreate();
         initDb();
         new CrashHandler(this);
+       new SixCrashHandler(this);
     }
 
     private void initDb() {
@@ -42,6 +50,9 @@ public class App extends Application{
         clickBaseView=Room.databaseBuilder(this,ClickBaseView.class,"five_data.db").allowMainThreadQueries().build();
         accessTimeBase=Room.databaseBuilder(this,AccessTimeBase.class,"four_data.db").allowMainThreadQueries().build();
         handleBaseView=Room.databaseBuilder(this, HandleBaseView.class,"five_data.db").allowMainThreadQueries().build();
+        sixAccessBase=Room.databaseBuilder(this, SixAccessBase.class,"six_accdata.db").allowMainThreadQueries().build();
+         sixClickBase=Room.databaseBuilder(this,SixClickNumberBase.class,"six_click.db").allowMainThreadQueries().build();
+     sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {
@@ -70,5 +81,18 @@ public class App extends Application{
 
     public static HandleBaseView getHandleBaseView() {
         return handleBaseView;
+    }
+
+    public static SixAccessBase getSixAccessBase() {
+        return sixAccessBase;
+    }
+
+    public static SixHandleBase getSixHandleBase() {
+        return sixHandleBase;
+    }
+
+    public static SixClickNumberBase getSixClickBase() {
+        return sixClickBase;
+
     }
 }

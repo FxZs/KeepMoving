@@ -16,6 +16,9 @@ import com.cn.room.activity.R;
 import com.sixday.fragment.AccessTimeFragment;
 import com.sixday.fragment.ClicksNumberFragment;
 import com.sixday.fragment.HandleFragment;
+import com.sixday.presenter.SixAccessPresenterImp;
+import com.sixday.presenter.SixClickNumberPresenterImp;
+import com.sixday.presenter.SixHandlePresenterImp;
 
 /**
  * Created by zhangpingzhen on 2018/7/18.
@@ -33,9 +36,9 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
     private TextView tv_handle;
 
     // 3个Fragment
-    private Fragment accessFragment;
-    private Fragment clickFragemet;
-    private Fragment handleFragment;
+    private AccessTimeFragment accessFragment;
+    private ClicksNumberFragment clickFragemet;
+    private HandleFragment handleFragment;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,7 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
                 }else {
                     transaction.show(accessFragment);
                 }
+                new SixAccessPresenterImp(accessFragment);
                 break;
             case 1:
                 if (clickFragemet==null){
@@ -80,6 +84,7 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
                 }else {
                     transaction.show(clickFragemet);
                 }
+                new SixClickNumberPresenterImp(clickFragemet);
                 break;
             case 2:
                 if (handleFragment==null){
@@ -88,6 +93,7 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
                 }else {
                     transaction.show(handleFragment);
                 }
+                new SixHandlePresenterImp(handleFragment);
                 break;
         }
         transaction.commit();

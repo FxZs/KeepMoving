@@ -3,6 +3,7 @@ package com.cn.room.activity;
 import android.view.View;
 
 import com.com.fiveday.OnclickEntity;
+import com.sixday.moudle.ClickEntity;
 
 import java.util.Calendar;
 
@@ -24,8 +25,12 @@ public abstract class NoDoubleClickListener implements View.OnClickListener{
             onNoDoubleClick(v);
             OnclickEntity onclickEntity=new OnclickEntity();
             onCachClick(onclickEntity);
+            ClickEntity clickEntity=new ClickEntity();
+            onSixClickCach(clickEntity);
         }
     }
+
+    protected abstract void onSixClickCach(ClickEntity clickEntity);
 
     protected abstract void onNoDoubleClick(View v);
     protected abstract void onCachClick(OnclickEntity entity);
