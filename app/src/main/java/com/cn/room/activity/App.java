@@ -38,7 +38,7 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         initDb();
-        new CrashHandler(this);
+//        new CrashHandler(this);
        new SixCrashHandler(this);
     }
 

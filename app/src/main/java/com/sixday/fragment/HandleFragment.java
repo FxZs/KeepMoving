@@ -45,15 +45,20 @@ public class HandleFragment extends Fragment implements SixHandleView{
         fiev_bbttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           /* HandleEntity handleEntity=new HandleEntity();
-            handleEntity.setErrorHandleTime("2019");
-            handleEntity.setHandleMessage("00000");
-            handleEntity.setWhichThread("main");
-                handlePresenterImp.insertSixHandlePresenter(handleEntity);*/
-
             }
         });
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        handlePresenterImp.start();
     }
 
     @Override

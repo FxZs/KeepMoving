@@ -65,6 +65,7 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
     private void initFragment(int index) {
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();
+        fragmentManager.getFragments().clear();
         // 隐藏所有Fragment
         hideFragment(transaction);
         switch (index){
@@ -109,6 +110,7 @@ public class SixActivity extends FragmentActivity implements View.OnClickListene
         if (handleFragment!=null){
             transaction.hide(handleFragment);
         }
+//        transaction.commit();
     }
 
     @Override

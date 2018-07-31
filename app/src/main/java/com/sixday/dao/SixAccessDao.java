@@ -18,4 +18,6 @@ public interface SixAccessDao{
 
     @Query("SELECT*FROM accessentity")
     List<AccessEntity> querySixAccess();
+    @Query("SELECT*FROM accessentity WHERE AccessEntity.id = :id")
+    AccessEntity querySixAccessByID(String id);
 }

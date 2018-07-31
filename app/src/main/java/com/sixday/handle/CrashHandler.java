@@ -35,7 +35,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
         if (mDefaultHandler != null) {
             mDefaultHandler.uncaughtException(t, e);
             Log.i(TAG,t.getName()+""+e.getLocalizedMessage());
-           HandleEntity handleEntity=new HandleEntity();
+            HandleEntity handleEntity=new HandleEntity();
             handleEntity.setErrorHandleTime("");
             handleEntity.setHandleMessage(e.getMessage());
             handleEntity.setWhichThread(t.getName());

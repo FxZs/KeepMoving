@@ -1,10 +1,12 @@
 package com.sixday.handle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Process;
 import android.util.Log;
 
 import com.cn.room.activity.App;
+import com.cn.room.activity.RoomActivity;
 import com.sixday.dao.SixHandleDao;
 import com.sixday.moudle.HandleEntity;
 
@@ -32,15 +34,21 @@ public class SixCrashHandler implements Thread.UncaughtExceptionHandler{
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         if (mDefaultHandler != null) {
-            mDefaultHandler.uncaughtException(t, e);
+//            mDefaultHandler.uncaughtException(t, e);
             Log.i(TAG,t.getName()+""+e.getLocalizedMessage());
             HandleEntity handleEntity=new HandleEntity();
             handleEntity.setErrorHandleTime("");
             handleEntity.setHandleMessage(e.getMessage());
             handleEntity.setWhichThread(t.getName());
             sixHandleDao.insertSixHandle(handleEntity);
+
+
         }
         Process.killProcess(Process.myPid());
         System.exit(0);
+
+        Intent i = new Intent(mContext, RoomActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(i);
     }
 }
