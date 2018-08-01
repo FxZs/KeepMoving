@@ -34,17 +34,17 @@ public class SixAccessNetSource implements SixAccessSource{
                     public void run() {
                         try {
                             /*第一种方法*/
-                          /*  RequestBody formBody = new FormBody.Builder()
+                            RequestBody formBody = new FormBody.Builder()
                                     .add("startdata", accessEntity.getStartdata())
                                     .add("pausedata", accessEntity.getPausedata())
-                                    .build();*/
+                                    .build();
                           /*第二种方法*/
                             RequestBody body = RequestBody.create(JSON,
                                     new JSONObject().put("startdata",accessEntity.getStartdata()).put("pausedata",accessEntity.getPausedata()).toString()
  );
                             Request request = new Request.Builder()
                                     .url("http://192.168.1.109:8080/a/access")
-                                    .post(body)
+                                    .post(formBody)
                                     .build();
                             Response response = client.newCall(request).execute();
                             Log.i("SixAccessNetSource",response.body().string());

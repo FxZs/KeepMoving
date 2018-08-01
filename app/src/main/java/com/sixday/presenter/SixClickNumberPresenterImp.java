@@ -2,6 +2,7 @@ package com.sixday.presenter;
 
 import com.cn.room.activity.App;
 import com.sixday.moudle.ClickEntity;
+import com.sixday.source.SixClickBtn;
 import com.sixday.source.SixClickNumberLocalSource;
 import com.sixday.view.SixClickNumberView;
 
@@ -12,16 +13,20 @@ import com.sixday.view.SixClickNumberView;
 public class SixClickNumberPresenterImp implements SixClickNumberPresenter{
     private SixClickNumberView sixClickView;
     private SixClickNumberLocalSource sixClickLocalSource;
+    private SixClickBtn sixClickBtn;
 
     public SixClickNumberPresenterImp(SixClickNumberView sixClickView) {
         this.sixClickView = sixClickView;
+        this.sixClickBtn=new SixClickBtn();
         sixClickLocalSource=new SixClickNumberLocalSource(App.getSixClickBase().sixClickNumberDao());
         sixClickView.setPresenter(this);
+
     }
 
     @Override
     public void insertSixClickNumberPresenter(ClickEntity clickEntity) {
         sixClickLocalSource.insertSixClickNumberSource(clickEntity);
+        sixClickBtn.insertSixClickNumberSource(clickEntity);
 
     }
 
