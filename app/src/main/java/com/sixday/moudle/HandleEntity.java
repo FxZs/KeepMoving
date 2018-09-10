@@ -13,7 +13,9 @@ public class HandleEntity {
     public String errorHandleTime;
     public String whichThread;
     public String handleMessage;
-
+   /* public String  whichUse="测试";
+    public String phoneType; //机型
+    private String androidos;  //版本*/
     public int getId() {
         return id;
     }

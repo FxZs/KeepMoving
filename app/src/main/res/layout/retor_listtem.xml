@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/url"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="拦截的url"/>
+        <TextView
+            android:id="@+id/body"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="拦截的body"/>
+        <TextView
+            android:id="@+id/http"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="拦截的请求"/>
+        <TextView
+            android:id="@+id/methord"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="拦截的methord"/>
+        <TextView
+            android:id="@+id/time"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="拦截的时间"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

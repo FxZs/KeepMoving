@@ -43,6 +43,12 @@ public class AccessTimeFragment extends Fragment implements SixAccessView{
         recyview=view.findViewById(R.id.recyview);
         recyview.setLayoutManager(new LinearLayoutManager(mContext));
         adapter=new SixAccessAdapter(lists,mContext);
+        adapter.setOnmyitemClick(new SixAccessAdapter.OnmyitemClick() {
+            @Override
+            public void myClick() {
+                Log.i(TAG,"myClick");
+            }
+        });
         recyview.setAdapter(adapter);
         Log.i(TAG,"onCreateView");
         return view;

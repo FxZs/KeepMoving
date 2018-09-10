@@ -1,7 +1,9 @@
 package com.cn.room.activity;
 
 import android.app.Application;
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
 import com.cn.room.Dao.UserDatabase;
@@ -11,6 +13,7 @@ import com.com.fiveday.handle.CrashHandler;
 import com.com.fourday.base.AccessTimeBase;
 import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
+import com.sixday.base.RetorDatabase;
 import com.sixday.base.SixAccessBase;
 import com.sixday.base.SixClickNumberBase;
 import com.sixday.base.SixHandleBase;
@@ -34,13 +37,23 @@ public class App extends Application{
     private static SixAccessBase sixAccessBase;
     private  static SixClickNumberBase sixClickBase;
     private static SixHandleBase sixHandleBase;
+    private static RetorDatabase retorDatabase;
     @Override
     public void onCreate() {
         super.onCreate();
         initDb();
 //        new CrashHandler(this);
-       new SixCrashHandler(this);
+      //new SixCrashHandler(this);
     }
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE department "
+                    + " ADD COLUMN phone_num TEXT");
+        }
+    };
+
+
 
     private void initDb() {
         database= Room.databaseBuilder(this,UserDatabase.class,"database_name").allowMainThreadQueries().build();
@@ -53,6 +66,7 @@ public class App extends Application{
         sixAccessBase=Room.databaseBuilder(this, SixAccessBase.class,"six_accdata.db").allowMainThreadQueries().build();
          sixClickBase=Room.databaseBuilder(this,SixClickNumberBase.class,"six_click.db").allowMainThreadQueries().build();
      sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
+   retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_1_2).build();
     }
 
     public static App getInstance() {
@@ -94,5 +108,9 @@ public class App extends Application{
     public static SixClickNumberBase getSixClickBase() {
         return sixClickBase;
 
+    }
+
+    public static RetorDatabase getRetorDatabase() {
+        return retorDatabase;
     }
 }

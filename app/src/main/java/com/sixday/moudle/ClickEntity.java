@@ -15,6 +15,7 @@ public class ClickEntity {
     public String clickBtnText;
     public String btnNextDecriber;
     public String whichPage;
+   /* public String  whichUse="测试";*/
 
     public int getId() {
         return id;

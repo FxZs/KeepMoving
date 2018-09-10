@@ -17,7 +17,11 @@ import com.com.fiveday.FivewActivity;
 import com.com.fourday.FourActivity;
 import com.com.threeday.ThreeDataActivity;
 import com.com.tworoom.TwoRoomActivity;
+import com.elevenday.ElevenActivity;
+import com.sixday.RetorActivity;
 import com.sixday.SixActivity;
+
+import newday.com.MainActivityNewDay;
 
 
 /**
@@ -28,7 +32,7 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
     private TextView starttime,stoptime,counttime;
      private PresenterImp presenterImp;
      private User user;
-     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,sixBtn;
+     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,sixBtn,eleventBtn,retoBtn,interBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +56,14 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
         threeroombtn=findViewById(R.id.Threeroombtn);
         fourroombtn=findViewById(R.id.Fourroombtn);
         fiveroombtn=findViewById(R.id.Fiveroombtn);
+        retoBtn=findViewById(R.id.retoBtn);
+        retoBtn.setOnClickListener(this);
+        interBtn=findViewById(R.id.interBtn);
+        interBtn.setOnClickListener(this);
         sixBtn=findViewById(R.id.sixBtn);
         sixBtn.setOnClickListener(this);
+        eleventBtn=findViewById(R.id.eleventBtn);
+        eleventBtn.setOnClickListener(this);
         tworoombtn.setOnClickListener(this);
         threeroombtn.setOnClickListener(this);
         fourroombtn.setOnClickListener(this);
@@ -99,6 +109,18 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.sixBtn:
                 Intent intentd=new Intent(RoomActivity.this, SixActivity.class);
                 startActivity(intentd);
+                break;
+            case R.id.eleventBtn:
+                Intent intentaa=new Intent(RoomActivity.this, ElevenActivity.class);
+                startActivity(intentaa);
+                break;
+            case R.id.retoBtn:
+                Intent intentab=new Intent(RoomActivity.this, RetorActivity.class);
+                startActivity(intentab);
+                break;
+            case R.id.interBtn:
+                Intent intentac=new Intent(RoomActivity.this, MainActivityNewDay.class);
+                startActivity(intentac);
                 break;
         }
     }

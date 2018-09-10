@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.MediaType;
@@ -23,28 +24,33 @@ import okhttp3.Response;
  */
 
 public class SixAccessNetSource implements SixAccessSource{
-    OkHttpClient client = new OkHttpClient();
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
+private String url="http://192.168.1.109:8080/access/insert";
     @Override
     public void insertAccessSource(final AccessEntity accessEntity) {
-        new Thread(
+
+        Map<String ,String> map=new HashMap<>();
+        map.put("startdata",accessEntity.getStartdata());
+        map.put("pausedata",accessEntity.getPausedata());
+        OkHttponeday okHttponeday=new OkHttponeday();
+        okHttponeday.insert(map,url);
+
+      /* new Thread(
                 new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            /*第一种方法*/
-                            RequestBody formBody = new FormBody.Builder()
+                         *//*第一种方法*//*
+                           RequestBody formBody = new FormBody.Builder()
                                     .add("startdata", accessEntity.getStartdata())
                                     .add("pausedata", accessEntity.getPausedata())
                                     .build();
-                          /*第二种方法*/
+                         *//*第二种方法*//*
                             RequestBody body = RequestBody.create(JSON,
                                     new JSONObject().put("startdata",accessEntity.getStartdata()).put("pausedata",accessEntity.getPausedata()).toString()
  );
                             Request request = new Request.Builder()
-                                    .url("http://192.168.1.109:8080/a/access")
-                                    .post(formBody)
+                                    .url("http://192.168.1.109:8080/access/insert")
+                                    .post(body)
                                     .build();
                             Response response = client.newCall(request).execute();
                             Log.i("SixAccessNetSource",response.body().string());
@@ -53,7 +59,8 @@ public class SixAccessNetSource implements SixAccessSource{
                         }
                     }
                 }
-        ).start();
+        ).start();*/
+
     }
 
     @Override

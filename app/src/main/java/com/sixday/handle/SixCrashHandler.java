@@ -35,7 +35,7 @@ public class SixCrashHandler implements Thread.UncaughtExceptionHandler{
     public void uncaughtException(Thread t, Throwable e) {
         if (mDefaultHandler != null) {
 //            mDefaultHandler.uncaughtException(t, e);
-            Log.i(TAG,t.getName()+""+e.getLocalizedMessage());
+            Log.e(TAG,t.getName()+""+e.getLocalizedMessage());
             HandleEntity handleEntity=new HandleEntity();
             handleEntity.setErrorHandleTime("");
             handleEntity.setHandleMessage(e.getMessage());

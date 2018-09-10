@@ -7,11 +7,13 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by Administrator on 2018/7/18.
  */
 @Entity
-public class AccessEntity {
+public class AccessEntity implements  BaseMoudle{
     @PrimaryKey(autoGenerate = true)
     public int id;
     public String startdata;
     public String pausedata;
+   /* private String whichPage;
+    private String timeslot;//停留时间*/
 
     public int getId() {
         return id;
