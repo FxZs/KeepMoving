@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.cn.room.activity.R;
 
@@ -19,6 +20,7 @@ import newtwoday.com.adapter.OnClickAdapter;
 import newtwoday.com.moudle.OnclickTimesNum;
 import newtwoday.com.presenter.OnClickPresenter;
 import newtwoday.com.presenter.OnClickTimesNumPresenterImp;
+import newtwoday.com.toos.ButtonUtils;
 import newtwoday.com.view.OnClickTimesView;
 
 /**
@@ -31,7 +33,7 @@ public class OnclickTimeNumFragment extends Fragment implements OnClickTimesView
     private Context context;
     private OnClickAdapter onClickAdapter;
     private OnClickTimesNumPresenterImp onClickTimesNumPresenterImp;
-
+    private Button onclick_btn;
 
     @Nullable
     @Override
@@ -42,6 +44,18 @@ public class OnclickTimeNumFragment extends Fragment implements OnClickTimesView
          recy_onclick.setLayoutManager(new LinearLayoutManager(context));
          onClickAdapter=new OnClickAdapter(lists,context);
          recy_onclick.setAdapter(onClickAdapter);
+        onclick_btn=view.findViewById(R.id.onclick_btn);
+        onclick_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!ButtonUtils.isFastDoubleClick(R.id.onclick_btn)) {
+                    OnclickTimesNum onclickTimesNum=new OnclickTimesNum();
+                    onclickTimesNum.setOnclickTimes("000000");
+                    onclickTimesNum.setWhichmethod("2010111");
+                    onClickTimesNumPresenterImp.insertOnClickPresenter(onclickTimesNum);
+                }
+            }
+        });
         return view;
     }
 
@@ -53,10 +67,7 @@ public class OnclickTimeNumFragment extends Fragment implements OnClickTimesView
     @Override
     public void onStart() {
         super.onStart();
-        OnclickTimesNum onclickTimesNum=new OnclickTimesNum();
-        onclickTimesNum.setOnclickTimes("000000");
-        onclickTimesNum.setWhichmethod("20101");
-        onClickTimesNumPresenterImp.insertOnClickPresenter(onclickTimesNum);
+
     }
 
     @Override
