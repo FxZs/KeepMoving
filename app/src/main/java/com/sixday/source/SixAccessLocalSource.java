@@ -13,6 +13,7 @@ public class SixAccessLocalSource implements SixAccessSource{
     private SixAccessDao sixAccessDao;
 
     public SixAccessLocalSource(SixAccessDao sixAccessDao) {
+
         this.sixAccessDao = sixAccessDao;
     }
 

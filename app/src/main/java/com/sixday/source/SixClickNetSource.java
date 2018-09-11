@@ -3,6 +3,7 @@ package com.sixday.source;
 import android.arch.persistence.room.Dao;
 import android.util.Log;
 
+import com.sixday.http.OkHttponeday;
 import com.sixday.moudle.Api;
 import com.sixday.moudle.ClickEntity;
 
@@ -40,10 +41,10 @@ public class SixClickNetSource implements SixClickNumberSource{
 
     @Override
     public void insertSixClickNumberSource(final ClickEntity clickEntity) {
-        String url="http://192.168.1.109:8080/click/insert";
+        String url="http://192.168.8.222:8080/click/insert";
         OkHttponeday okHttponeday=new OkHttponeday();
 
-        Map<String,String> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<>();
         map.put("btntime",clickEntity.getClickBtnTime());
         map.put("btntext",clickEntity.getClickBtnText());
         map.put("btndescribe",clickEntity.getBtnNextDecriber());

@@ -3,6 +3,7 @@ package com.sixday.source;
 import android.util.Log;
 
 import com.sixday.dao.SixAccessDao;
+import com.sixday.http.OkHttponeday;
 import com.sixday.moudle.AccessEntity;
 
 import org.json.JSONObject;
@@ -24,11 +25,11 @@ import okhttp3.Response;
  */
 
 public class SixAccessNetSource implements SixAccessSource{
-private String url="http://192.168.1.109:8080/access/insert";
+private String url="http://192.168.8.222:8088/access/insertaccess";
     @Override
     public void insertAccessSource(final AccessEntity accessEntity) {
 
-        Map<String ,String> map=new HashMap<>();
+        Map<String ,Object> map=new HashMap<>();
         map.put("startdata",accessEntity.getStartdata());
         map.put("pausedata",accessEntity.getPausedata());
         OkHttponeday okHttponeday=new OkHttponeday();

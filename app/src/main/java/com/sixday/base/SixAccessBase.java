@@ -9,7 +9,7 @@ import com.sixday.moudle.AccessEntity;
 /**
  * Created by zhangpingzhen on 2018/7/19.
  */
-@Database(entities = AccessEntity.class,version = 1)
+@Database(entities = AccessEntity.class,version = 2)
 public abstract class SixAccessBase extends RoomDatabase{
     public abstract SixAccessDao sixAccessDao();
 }

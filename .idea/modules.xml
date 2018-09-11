@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KeepMoving.iml" filepath="$PROJECT_DIR$/.idea/KeepMoving.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KeepMoving.iml" filepath="$PROJECT_DIR$/KeepMoving.iml" />
+      <module fileurl="file://E:\newstudiooneday\KeepMoving\.idea\KeepMoving.iml" filepath="E:\newstudiooneday\KeepMoving\.idea\KeepMoving.iml" />
       <module fileurl="file://E:\androidstudio\KeepMoving\androidproject.iml" filepath="E:\androidstudio\KeepMoving\androidproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

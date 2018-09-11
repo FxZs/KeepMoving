@@ -40,6 +40,7 @@ public class AccessTimeFragment extends Fragment implements SixAccessView{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.tworoomactivity,container,false);
         mContext=this.getActivity();
+        sixPresenterImp=new SixAccessPresenterImp(this);
         recyview=view.findViewById(R.id.recyview);
         recyview.setLayoutManager(new LinearLayoutManager(mContext));
         adapter=new SixAccessAdapter(lists,mContext);
