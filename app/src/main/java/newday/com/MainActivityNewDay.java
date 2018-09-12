@@ -15,6 +15,8 @@ import com.sixday.presenter.SixAccessPresenterImp;
 
 import newday.com.Fragment.InterTimeFragment;
 import newday.com.presenter.InterTimePresenterImp;
+import newthreeday.com.fragment.CatchHandleFragment;
+import newthreeday.com.presenter.CatchHanldePresenterImp;
 import newtwoday.com.fragment.OnclickTimeNumFragment;
 import newtwoday.com.presenter.OnClickTimesNumPresenterImp;
 
@@ -23,12 +25,13 @@ import newtwoday.com.presenter.OnClickTimesNumPresenterImp;
  */
 
 public class MainActivityNewDay extends AppCompatActivity implements View.OnClickListener{
-    private LinearLayout ll_home,ll_address;
+    private LinearLayout ll_home,ll_address,ll_friend;
     private TextView tv_accetime;
     private TextView tv_clicknumber;
     private TextView tv_handle;
     private InterTimeFragment interTimeFragment;
     private OnclickTimeNumFragment onclickTimeNumFragment;
+    private CatchHandleFragment catchHandleFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +67,15 @@ public class MainActivityNewDay extends AppCompatActivity implements View.OnClic
                 }
                 new OnClickTimesNumPresenterImp(onclickTimeNumFragment);
                 break;
+            case 2:
+                if (catchHandleFragment==null){
+                    catchHandleFragment=new CatchHandleFragment();
+                    transaction.add(R.id.main_fragment,catchHandleFragment);
+                }else {
+                    transaction.show(catchHandleFragment);
+                }
+                new CatchHanldePresenterImp(catchHandleFragment);
+                break;
         }
         transaction.commit();
     }
@@ -73,9 +85,12 @@ public class MainActivityNewDay extends AppCompatActivity implements View.OnClic
         ll_home.setOnClickListener(this);
         ll_address=findViewById(R.id.ll_address);
         ll_address.setOnClickListener(this);
+        ll_friend=findViewById(R.id.ll_friend);
+        ll_friend.setOnClickListener(this);
         // 底部菜单4个菜单标题
         tv_accetime = (TextView) findViewById(R.id.tv_home);
         tv_clicknumber = (TextView) findViewById(R.id.tv_address);
+        tv_handle=findViewById(R.id.tv_friend);
 
     }
     private void hideFragment(FragmentTransaction transaction) {
@@ -85,7 +100,9 @@ public class MainActivityNewDay extends AppCompatActivity implements View.OnClic
         if (onclickTimeNumFragment!=null){
             transaction.hide(onclickTimeNumFragment);
         }
-
+        if (catchHandleFragment!=null){
+            transaction.hide(catchHandleFragment);
+        }
     }
 
     @Override
@@ -100,6 +117,12 @@ switch (v.getId()){
         tv_clicknumber.setTextColor(0xff1B940A);
         tv_accetime.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
         initFragment(1);
+        break;
+    case R.id.ll_friend:
+        tv_handle.setTextColor(0xff1B940A);
+        tv_clicknumber.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
+        tv_accetime.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
+        initFragment(2);
         break;
 }
     }

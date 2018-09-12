@@ -12,6 +12,7 @@ import com.sixday.moudle.HandleEntity;
 
 /**
  * Created by zhangpingzhen on 2018/7/19.
+ * 就这个类  然后有异常的话  就闪退
  */
 
 public class SixCrashHandler implements Thread.UncaughtExceptionHandler{
@@ -34,7 +35,7 @@ public class SixCrashHandler implements Thread.UncaughtExceptionHandler{
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         if (mDefaultHandler != null) {
-//            mDefaultHandler.uncaughtException(t, e);
+//            mDefaultHandler.uncaughtException(t, e); 你这里不是把异常数据插入到数据库了么  也查了
             Log.e(TAG,t.getName()+""+e.getLocalizedMessage());
             HandleEntity handleEntity=new HandleEntity();
             handleEntity.setErrorHandleTime("");

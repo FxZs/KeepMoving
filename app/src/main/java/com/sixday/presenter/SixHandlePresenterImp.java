@@ -33,6 +33,6 @@ public class SixHandlePresenterImp implements SixHandlePresenter{
 
     @Override
     public void start() {
-
+        querySixHandlePresenter();
     }
 }

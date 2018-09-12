@@ -41,10 +41,12 @@ public class HandleFragment extends Fragment implements SixHandleView{
         newfive_recy.setLayoutManager(new LinearLayoutManager(mContext));
         handleAdapter=new SixHandleAdapter(lists,mContext);
         newfive_recy.setAdapter(handleAdapter);
-        //fiev_bbttn=view.findViewById(R.id.fiev_bbttn);
+        fiev_bbttn=view.findViewById(R.id.fiev_bbttn);
         fiev_bbttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String a = null;
+                a.charAt(0);
             }
         });
         return view;

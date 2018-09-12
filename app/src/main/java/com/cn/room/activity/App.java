@@ -13,6 +13,7 @@ import com.com.fiveday.handle.CrashHandler;
 import com.com.fourday.base.AccessTimeBase;
 import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
+import com.facebook.stetho.Stetho;
 import com.sixday.base.RetorDatabase;
 import com.sixday.base.SixAccessBase;
 import com.sixday.base.SixClickNumberBase;
@@ -42,10 +43,12 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         initDb();
+        Stetho.initializeWithDefaults(this);
 //        new CrashHandler(this);
       //new SixCrashHandler(this);
+     new newthreeday.com.handle.CrashHandler(this);
     }
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             database.execSQL("ALTER TABLE department "
@@ -66,7 +69,7 @@ public class App extends Application{
         sixAccessBase=Room.databaseBuilder(this, SixAccessBase.class,"six_accdata.db").allowMainThreadQueries().build();
          sixClickBase=Room.databaseBuilder(this,SixClickNumberBase.class,"six_click.db").allowMainThreadQueries().build();
      sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
-   retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_1_2).build();
+   retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_2_3).build();
     }
 
     public static App getInstance() {
