@@ -111,11 +111,13 @@ switch (v.getId()){
     case R.id.ll_home:
         tv_accetime.setTextColor(0xff1B940A);
         tv_clicknumber.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
+        tv_handle.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
         initFragment(0);
         break;
     case R.id.ll_address:
         tv_clicknumber.setTextColor(0xff1B940A);
         tv_accetime.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
+        tv_handle.setTextColor((this.getResources().getColor(R.color.colorPrimary)));
         initFragment(1);
         break;
     case R.id.ll_friend:

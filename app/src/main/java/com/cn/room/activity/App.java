@@ -9,7 +9,6 @@ import android.content.Context;
 import com.cn.room.Dao.UserDatabase;
 import com.com.fiveday.baseview.ClickBaseView;
 import com.com.fiveday.baseview.HandleBaseView;
-import com.com.fiveday.handle.CrashHandler;
 import com.com.fourday.base.AccessTimeBase;
 import com.com.threeday.base.ThreeDataBase;
 import com.com.tworoom.source.Tworoomdatabase;
@@ -19,6 +18,9 @@ import com.sixday.base.SixAccessBase;
 import com.sixday.base.SixClickNumberBase;
 import com.sixday.base.SixHandleBase;
 import com.sixday.handle.SixCrashHandler;
+
+import newfourday.com.base.Fourdatabase;
+import newthreeday.com.handle.CrashHandler;
 
 /**
  * Created by zhangpingzhen on 2018/7/10.
@@ -39,14 +41,14 @@ public class App extends Application{
     private  static SixClickNumberBase sixClickBase;
     private static SixHandleBase sixHandleBase;
     private static RetorDatabase retorDatabase;
+    private static Fourdatabase fourdatabase;
     @Override
     public void onCreate() {
         super.onCreate();
         initDb();
         Stetho.initializeWithDefaults(this);
-//        new CrashHandler(this);
-      //new SixCrashHandler(this);
-     new newthreeday.com.handle.CrashHandler(this);
+     //new SixCrashHandler(this);
+     new CrashHandler(this);
     }
     static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override
@@ -70,6 +72,7 @@ public class App extends Application{
          sixClickBase=Room.databaseBuilder(this,SixClickNumberBase.class,"six_click.db").allowMainThreadQueries().build();
      sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
    retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_2_3).build();
+   fourdatabase=Room.databaseBuilder(this,Fourdatabase.class,"four.db").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {
@@ -115,5 +118,9 @@ public class App extends Application{
 
     public static RetorDatabase getRetorDatabase() {
         return retorDatabase;
+    }
+
+    public static Fourdatabase getFourdatabase() {
+        return fourdatabase;
     }
 }

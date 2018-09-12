@@ -40,7 +40,7 @@ public class CrashHandler  implements Thread.UncaughtExceptionHandler{
             CatchHandleEntity catchHandleEntity=new CatchHandleEntity();
             catchHandleEntity.setCatchTime(System.currentTimeMillis()+"");
             catchHandleEntity.setWhichMethod(t.getName());
-            catchHandleEntity.setWhatHandle(e.getMessage());
+            catchHandleEntity.setWhatHandle("错误");
             catchHandleEntity.setAndroidos("安卓");
             catchHandleEntity.setPhoneType("7.1.1");
             catchHandleEntity.setWhichUse("测试人员");

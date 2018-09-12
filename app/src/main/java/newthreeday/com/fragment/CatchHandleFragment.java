@@ -61,7 +61,7 @@ public class CatchHandleFragment extends Fragment implements CatchHandleView,Vie
     @Override
     public void onResume() {
         super.onResume();
-        catchHanldePresenterImp.start();
+        catchHanldePresenterImp.queryCatchHandlepre();
     }
 
     @Override
@@ -78,6 +78,11 @@ public class CatchHandleFragment extends Fragment implements CatchHandleView,Vie
 
     @Override
     public void onClick(View view) {
-
+     switch (view.getId()){
+         case R.id.catch_btn:
+             String a = null;
+             a.charAt(0);
+             break;
+     }
     }
 }

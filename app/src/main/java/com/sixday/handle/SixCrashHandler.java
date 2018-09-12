@@ -38,9 +38,9 @@ public class SixCrashHandler implements Thread.UncaughtExceptionHandler{
 //            mDefaultHandler.uncaughtException(t, e); 你这里不是把异常数据插入到数据库了么  也查了
             Log.e(TAG,t.getName()+""+e.getLocalizedMessage());
             HandleEntity handleEntity=new HandleEntity();
-            handleEntity.setErrorHandleTime("");
-            handleEntity.setHandleMessage(e.getMessage());
-            handleEntity.setWhichThread(t.getName());
+            handleEntity.setErrorHandleTime("2018080808");
+            handleEntity.setHandleMessage("0011211222");
+            handleEntity.setWhichThread("030100000");
             sixHandleDao.insertSixHandle(handleEntity);
 
 

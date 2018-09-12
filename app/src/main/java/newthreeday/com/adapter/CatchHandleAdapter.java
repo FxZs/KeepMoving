@@ -60,6 +60,6 @@ public class CatchHandleAdapter extends RecyclerView.Adapter<CatchHandleAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 }

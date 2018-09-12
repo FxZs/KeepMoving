@@ -31,9 +31,4 @@ public class CatchHanldePresenterImp implements CatchHandlePresenter{
     public void queryCatchHandlepre() {
         catchHandleView.showCatchHandle(catchHandleDao.queryCatchHandle());
     }
-
-    public void start() {
-        queryCatchHandlepre();
-    }
-
 }

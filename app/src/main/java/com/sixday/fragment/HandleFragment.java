@@ -35,8 +35,8 @@ public class HandleFragment extends Fragment implements SixHandleView{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view=  inflater.inflate(R.layout.newfive_activity,container,false);
-       mContext=this.getActivity();
+        View view=  inflater.inflate(R.layout.newfive_activity,container,false);
+        mContext=this.getActivity();
         newfive_recy=view.findViewById(R.id.newfive_recy);
         newfive_recy.setLayoutManager(new LinearLayoutManager(mContext));
         handleAdapter=new SixHandleAdapter(lists,mContext);
@@ -65,9 +65,10 @@ public class HandleFragment extends Fragment implements SixHandleView{
 
     @Override
     public void showSixHandleView(List<HandleEntity> handleEntities) {
-      lists.clear();
-      lists.addAll(handleEntities);
-      handleAdapter.notifyDataSetChanged();
+        lists.clear();
+        lists.addAll(handleEntities);
+        handleAdapter.notifyDataSetChanged();
+
     }
 
     @Override
