@@ -22,6 +22,7 @@ import com.sixday.RetorActivity;
 import com.sixday.SixActivity;
 
 import newday.com.MainActivityNewDay;
+import newfourday.com.NewFourDayActivity;
 
 
 /**
@@ -32,7 +33,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
     private TextView starttime,stoptime,counttime;
      private PresenterImp presenterImp;
      private User user;
-     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,sixBtn,eleventBtn,retoBtn,interBtn;
+     private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,
+             sixBtn,eleventBtn,retoBtn,interBtn,newFourBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
         threeroombtn.setOnClickListener(this);
         fourroombtn.setOnClickListener(this);
         fiveroombtn.setOnClickListener(this);
+        newFourBtn=findViewById(R.id.newFourBtn);
+        newFourBtn.setOnClickListener(this);
     }
 
     @Override
@@ -121,6 +125,10 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.interBtn:
                 Intent intentac=new Intent(RoomActivity.this, MainActivityNewDay.class);
                 startActivity(intentac);
+                break;
+            case R.id.newFourBtn:
+                Intent intentad=new Intent(RoomActivity.this, NewFourDayActivity.class);
+                startActivity(intentad);
                 break;
         }
     }

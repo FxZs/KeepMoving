@@ -94,6 +94,11 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:hint="最新的"/>
+        <Button
+            android:id="@+id/newFourBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:hint="新的activity"/>
     </LinearLayout>
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>

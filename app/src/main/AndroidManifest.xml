@@ -29,6 +29,7 @@
         <activity android:name="com.elevenday.ElevenActivity"/>
         <activity android:name="com.sixday.RetorActivity"/>
         <activity android:name="newday.com.MainActivityNewDay"/>
+        <activity android:name="newfourday.com.NewFourDayActivity"/>
     </application>
 
 </manifest>
