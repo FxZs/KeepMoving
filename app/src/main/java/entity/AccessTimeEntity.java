@@ -14,14 +14,13 @@ public class AccessTimeEntity {
     private int id;
 
     private String startTime;
-    private String resurmTime;
+    private String resurmTime;//离开时间
     private String whichUser;
-    private String totalTime;
-    private String phoneType;
-    private String whichSystem;
-    private boolean isMainThread;//是否主线程
-    private String whichPageBack;//哪个页面离开
-    private String whichPageGo;//哪个页面进入
+    private String totalTime;//总共时间
+    private String phoneType;//手机类型
+    private String whichSystem; //什么系统
+    private String threadName;//是否主线程
+    private String whichPage;//哪个页面
 
     public int getId() {
         return id;
@@ -79,28 +78,20 @@ public class AccessTimeEntity {
         this.whichSystem = whichSystem;
     }
 
-    public boolean isMainThread() {
-        return isMainThread;
+    public String getThreadName() {
+        return threadName;
     }
 
-    public void setMainThread(boolean mainThread) {
-        isMainThread = mainThread;
+    public void setThreadName(String threadName) {
+        this.threadName = threadName;
     }
 
-    public String getWhichPageBack() {
-        return whichPageBack;
+    public String getWhichPage() {
+        return whichPage;
     }
 
-    public void setWhichPageBack(String whichPageBack) {
-        this.whichPageBack = whichPageBack;
-    }
-
-    public String getWhichPageGo() {
-        return whichPageGo;
-    }
-
-    public void setWhichPageGo(String whichPageGo) {
-        this.whichPageGo = whichPageGo;
+    public void setWhichPage(String whichPage) {
+        this.whichPage = whichPage;
     }
 
     @Override
@@ -113,9 +104,8 @@ public class AccessTimeEntity {
                 ", totalTime='" + totalTime + '\'' +
                 ", phoneType='" + phoneType + '\'' +
                 ", whichSystem='" + whichSystem + '\'' +
-                ", isMainThread=" + isMainThread +
-                ", whichPageBack='" + whichPageBack + '\'' +
-                ", whichPageGo='" + whichPageGo + '\'' +
+                ", threadName='" + threadName + '\'' +
+                ", whichPage='" + whichPage + '\'' +
                 '}';
     }
 }
