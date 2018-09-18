@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cn.room.activity.App;
 import com.cn.room.activity.R;
@@ -26,7 +27,10 @@ import java.util.List;
 import java.util.Random;
 
 import entity.AccessTimeEntity;
+import entity.ClickListerEntity;
+import entity.HandleDealWithEntity;
 import newfourday.com.adapter.FourAccessAdapter;
+import newfourday.com.dao.ClickListerDao;
 import newfourday.com.presenter.FourPresenter;
 import newfourday.com.presenter.FourPresenterImp;
 import newfourday.com.view.FourView;
@@ -38,7 +42,7 @@ import newfourday.com.view.FourView;
 public class NewFourDayActivity extends AppCompatActivity implements View.OnClickListener,FourView{
     private String nowTime;
     private String beforeFourTime;
-    private Button new_insertaccess;
+    private Button new_insertaccess,new_onclickbtn,new_headbtn,new_httpbtn;
     long atime,btime;
     private String[] testName={"test1","test2","test3","test4","test5","test6"};
     private Context context;
@@ -47,12 +51,15 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     private FourAccessAdapter accessAdapter;
     private List<AccessTimeEntity> lists=new ArrayList<>();
     private FourPresenterImp fourPresenterImp;
+    private ClickListerDao clickListerDao;
+
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fouractivity_main);
+        clickListerDao=App.getFourdatabase().clickListerDao();
         context=this;
         initView();
     }
@@ -65,7 +72,12 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         accessAdapter=new FourAccessAdapter(lists,this);
         recy_one.setAdapter(accessAdapter);
         fourPresenterImp=new FourPresenterImp(this);
-
+        new_onclickbtn=findViewById(R.id.new_onclickbtn);
+        new_onclickbtn.setOnClickListener(this);
+        new_headbtn=findViewById(R.id.new_headbtn);
+        new_headbtn.setOnClickListener(this);
+        new_httpbtn=findViewById(R.id.new_httpbtn);
+        new_httpbtn.setOnClickListener(this);
     }
 
     @Override
@@ -83,12 +95,10 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         PackageManager packageManager=getPackageManager();
         try {
             PackageInfo info=packageManager.getPackageInfo(getPackageName(),0);
-            String vision=info.versionName;
-            accessTimeEntity.setPhoneType(vision);
-            accessTimeEntity.setWhichSystem(vision);
+            accessTimeEntity.setPhoneType(info.versionName);
+            accessTimeEntity.setWhichSystem(info.versionName);
             accessTimeEntity.setTotalTime("111100");
-            Thread t = Thread.currentThread();
-            accessTimeEntity.setThreadName(t.getName());
+            accessTimeEntity.setThreadName(Thread.currentThread().getName());
             accessTimeEntity.setWhichPage(context.getPackageName());
             int ai=0;
             double j=Math.random()*1000;//random（）生成0到1的随机数
@@ -192,6 +202,37 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
                 //Comparaent();
                 insertAccess();
 
+                break;
+            case R.id.new_onclickbtn:
+                ClickListerEntity clickListerEntity=new ClickListerEntity();
+                SimpleDateFormat sfa = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+                Calendar c = Calendar.getInstance();
+                clickListerEntity.setWhatClickTime(sfa.format(c.getTime()));
+                clickListerEntity.setBtnText(new_onclickbtn.getText().toString());
+                clickListerEntity.setWhichPage(context.getPackageName());
+                clickListerEntity.setWhichThread(Thread.currentThread().getName().toString());
+                int aib=0;
+                double jb=Math.random()*1000;//random（）生成0到1的随机数
+                aib=((int)jb)%testName.length;
+                clickListerEntity.setTestUser(testName[aib]);
+                try {
+                    PackageInfo info=getPackageManager().getPackageInfo(getPackageName(),0);
+                    clickListerEntity.setPhoneType(info.versionName);
+                    clickListerEntity.setWhichSystem(info.versionName);
+                    clickListerEntity.setWhereBtn(new_onclickbtn.getPrivateImeOptions());
+                    clickListerEntity.setWhichMethod(Thread.currentThread().getStackTrace().toString());
+                    clickListerDao.insertClickLister(clickListerEntity);
+                    System.out.print("click插入数据库成功");
+                    Toast.makeText(context,"click数据插入数据库成功",Toast.LENGTH_LONG).show();
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.new_headbtn:
+                String a=null;
+                a.charAt(0);
+                break;
+            case R.id.new_httpbtn:
                 break;
         }
     }

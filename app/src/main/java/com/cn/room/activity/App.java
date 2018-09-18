@@ -19,6 +19,7 @@ import com.sixday.base.SixClickNumberBase;
 import com.sixday.base.SixHandleBase;
 import com.sixday.handle.SixCrashHandler;
 
+import newfourday.com.ClickCrashHandler;
 import newfourday.com.base.Fourdatabase;
 import newthreeday.com.handle.CrashHandler;
 
@@ -48,7 +49,8 @@ public class App extends Application{
         initDb();
         Stetho.initializeWithDefaults(this);
      //new SixCrashHandler(this);
-     new CrashHandler(this);
+    // new CrashHandler(this);
+     new ClickCrashHandler(this);
     }
     static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override

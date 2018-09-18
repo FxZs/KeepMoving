@@ -18,7 +18,7 @@ public class HandleDealWithEntity {
     private String whichCaozuo;//什么操作导致的异常
     private String phoneType;//什么机型
     private String whichSystem;//什么系统
-    private boolean isMainThread;//是否主线程
+    private String whichThread;//哪个线程
 
     public int getId() {
         return id;
@@ -92,12 +92,12 @@ public class HandleDealWithEntity {
         this.whichSystem = whichSystem;
     }
 
-    public boolean isMainThread() {
-        return isMainThread;
+    public String getWhichThread() {
+        return whichThread;
     }
 
-    public void setMainThread(boolean mainThread) {
-        isMainThread = mainThread;
+    public void setWhichThread(String whichThread) {
+        this.whichThread = whichThread;
     }
 
     @Override
@@ -112,7 +112,7 @@ public class HandleDealWithEntity {
                 ", whichCaozuo='" + whichCaozuo + '\'' +
                 ", phoneType='" + phoneType + '\'' +
                 ", whichSystem='" + whichSystem + '\'' +
-                ", isMainThread=" + isMainThread +
+                ", whichThread='" + whichThread + '\'' +
                 '}';
     }
 }

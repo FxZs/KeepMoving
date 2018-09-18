@@ -17,8 +17,7 @@ public class ClickListerEntity {
     private String testUser;
     private String phoneType;//什么机型
     private String whichSystem;//什么系统
-    private String nextDoing;//下一步做什么
-    private boolean isMainThread;//是否主线程
+    private String whichThread;//是否主线程
     private String whichPage;//当前页面是哪个
 
     public int getId() {
@@ -85,20 +84,12 @@ public class ClickListerEntity {
         this.whichSystem = whichSystem;
     }
 
-    public String getNextDoing() {
-        return nextDoing;
+    public String getWhichThread() {
+        return whichThread;
     }
 
-    public void setNextDoing(String nextDoing) {
-        this.nextDoing = nextDoing;
-    }
-
-    public boolean isMainThread() {
-        return isMainThread;
-    }
-
-    public void setMainThread(boolean mainThread) {
-        isMainThread = mainThread;
+    public void setWhichThread(String whichThread) {
+        this.whichThread = whichThread;
     }
 
     public String getWhichPage() {
@@ -120,8 +111,7 @@ public class ClickListerEntity {
                 ", testUser='" + testUser + '\'' +
                 ", phoneType='" + phoneType + '\'' +
                 ", whichSystem='" + whichSystem + '\'' +
-                ", nextDoing='" + nextDoing + '\'' +
-                ", isMainThread=" + isMainThread +
+                ", whichThread='" + whichThread + '\'' +
                 ", whichPage='" + whichPage + '\'' +
                 '}';
     }

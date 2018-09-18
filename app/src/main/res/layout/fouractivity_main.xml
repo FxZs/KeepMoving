@@ -12,6 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="点我"/>
+
+    <Button
+        android:id="@+id/new_onclickbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="点我插入click数据"/>
+    <Button
+        android:id="@+id/new_headbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="点我插入header数据"/>
+    <Button
+        android:id="@+id/new_httpbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="点我插入http数据"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recy_one"
         android:layout_width="match_parent"

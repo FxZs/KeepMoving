@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by zhangpingzhen on 2018/9/12.
  */
 @Entity(tableName = "httpT")
-public class httpEntity {
+public class HttpEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String myUrl;
@@ -111,7 +111,7 @@ public class httpEntity {
 
     @Override
     public String toString() {
-        return "httpEntity{" +
+        return "HttpEntity{" +
                 "id=" + id +
                 ", myUrl='" + myUrl + '\'' +
                 ", myMethod='" + myMethod + '\'' +
