@@ -23,5 +23,5 @@ public abstract class Fourdatabase extends RoomDatabase{
 
       public abstract ClickListerDao clickListerDao();
       public abstract HandleDealWithDao handleDealWithDao();
-      public  abstract HttpEntityDao httpEntityDao();
+     // public  abstract HttpEntityDao httpEntityDao();
 }

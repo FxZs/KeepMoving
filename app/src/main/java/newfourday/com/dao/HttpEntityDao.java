@@ -13,8 +13,8 @@ import entity.HttpEntity;
  */
 @Dao
 public interface HttpEntityDao {
-    @Insert
+  /*  @Insert
     void insertHttpEntity(HttpEntity httpEntity);
     @Query("select*from httpT")
-    List<HttpEntity> queryHttpEntity();
+    List<HttpEntity> queryHttpEntity();*/
 }

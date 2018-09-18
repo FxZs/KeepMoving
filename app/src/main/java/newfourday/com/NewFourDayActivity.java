@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,10 @@ import com.cn.room.activity.App;
 import com.cn.room.activity.R;
 import com.com.fourday.dao.AccessTimeDao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +49,8 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     private String beforeFourTime;
     private Button new_insertaccess,new_onclickbtn,new_headbtn,new_httpbtn;
     long atime,btime;
-    private String[] testName={"test1","test2","test3","test4","test5","test6"};
+    private String[] testName={"test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11",
+    "test12","test13","test14","test15","test16","test17","test18","test19","test20"};
     private Context context;
     String testname,datetime;
     private RecyclerView recy_one;
@@ -52,6 +58,10 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     private List<AccessTimeEntity> lists=new ArrayList<>();
     private FourPresenterImp fourPresenterImp;
     private ClickListerDao clickListerDao;
+    String DATABASE_NAME = "four.db";
+
+    String oldPath = "data/data/com.fx.keepmoving/databases/" + DATABASE_NAME;
+    String newPath = Environment.getExternalStorageDirectory() + File.separator + DATABASE_NAME;
 
 
 
@@ -62,7 +72,34 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         clickListerDao=App.getFourdatabase().clickListerDao();
         context=this;
         initView();
+
     }
+
+    public static void copyFile(String oldPath, String newPath) {
+        try {
+            int bytesum = 0;
+            int byteread = 0;
+            File oldfile = new File(oldPath);
+            File newfile = new File(newPath);
+            if (!newfile.exists()) {
+                newfile.createNewFile();
+            }
+            if (oldfile.exists()) { // 文件存在时
+                InputStream inStream = new FileInputStream(oldPath); // 读入原文件
+                FileOutputStream fs = new FileOutputStream(newPath);
+                byte[] buffer = new byte[1444];
+                while ((byteread = inStream.read(buffer)) != -1) {
+                    bytesum += byteread; // 字节数 文件大小
+                    fs.write(buffer, 0, byteread);
+                }
+                inStream.close();
+            }
+        } catch (Exception e) {
+            System.out.println("复制单个文件操作出错");
+            e.printStackTrace();
+        }
+    }
+
 
     private void initView() {
         new_insertaccess=findViewById(R.id.new_insertaccess);
@@ -83,125 +120,22 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onStart() {
         super.onStart();
-        AccessTimeEntity accessTimeEntity=new AccessTimeEntity();
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar c = Calendar.getInstance();
-        System.out.println("当前日期："+sf.format(c.getTime()));
-        nowTime=sf.format(c.getTime());
-        accessTimeEntity.setStartTime(nowTime);
-        SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar cd = Calendar.getInstance();
-        accessTimeEntity.setResurmTime(sfd.format(cd.getTime()));
-        PackageManager packageManager=getPackageManager();
-        try {
-            PackageInfo info=packageManager.getPackageInfo(getPackageName(),0);
-            accessTimeEntity.setPhoneType(info.versionName);
-            accessTimeEntity.setWhichSystem(info.versionName);
-            accessTimeEntity.setTotalTime("111100");
-            accessTimeEntity.setThreadName(Thread.currentThread().getName());
-            accessTimeEntity.setWhichPage(context.getPackageName());
-            int ai=0;
-            double j=Math.random()*1000;//random（）生成0到1的随机数
-            ai=((int)j)%testName.length;
-            System.out.println("测试人员="+testName[ai]);
-            accessTimeEntity.setWhichUser(testName[ai]);
-            fourPresenterImp.insertFour(accessTimeEntity);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        fourPresenterImp.queryFour();
+       // fourPresenterImp.queryFour();
     }
 
-    /**
-     * 一个月几天？30
-     * 一天几个小时？24
-     * 一个小时多少分钟？60
-     * 一分钟多少秒？60
-     * 一秒多少毫秒？1000
-     * 所以说 一天，一天，一天多少毫秒？写答案  24*60*60*1000=
-     * 你要写的是4 月 到今天的随机数
-     * 30 + 31 + 30 +31 +31 +14 四月 1 - 今天 的天数
-     * 这些天的毫秒数是多少？写答案，人呢？不知道
-     * （30 + 31 + 30 +31 +31 +14）* 24*60*60*1000 = x   你这写的是今天的吧
-     * 四月1那天的毫秒值是多少？
-     * System.currentTimeMillis() - x = y 起始那天的毫秒值
-     * 接下来就是随机数了，
-     *
-     *
-     * 说说你这样算下来  和我那个两个值 有啥区别？
-     *
-     *  rand.nextLong()  这个方法你看过么？这个方法只是随机生成一个long的 你继续呀，你没有办法去确定他的范围
-     *
-     *  这个求时间差随你怎么做就是一道简单的数学题
-     *
-     *  我只是在写我觉得效率最高的代码。嗯
-     */
-    private void Comparaent() {
-
-
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar c = Calendar.getInstance();
-        System.out.println("当前日期："+sf.format(c.getTime()));
-        nowTime=sf.format(c.getTime());
-        try {
-            atime = sf.parse(sf.format(c.getTime())).getTime();//当前日期的毫秒值
-            c.add(Calendar.DAY_OF_MONTH, -120);
-            System.out.println("4个月前日期 ： "+sf.format(c.getTime()));
-            beforeFourTime=sf.format(c.getTime());
-            btime = sf.parse(sf.format(c.getTime())).getTime();//四个月前日期的毫秒值
-            long re=atime-btime;
-            Random rand = new Random();
-            long chazhi=(long) (Math.random()*50)*1000;
-            long suijishu =(long) (btime+Math.random()*re);//开始访问的随机数
-            long startsuiji=suijishu+chazhi;//结束访问的随机数
-
-            int ai=0;
-            double j=Math.random()*1000;//random（）生成0到1的随机数
-            ai=((int)j)%testName.length;
-            System.out.println("测试人员="+testName[ai]);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    /**
-     * 获取前n天日期、后n天日期
-     *
-     * @param distanceDay 前几天 如获取前7天日期则传-7即可；如果后7天则传7
-     * @return
-     */
-    public static String getOldDate(int distanceDay) {
-        SimpleDateFormat dft = new SimpleDateFormat("yyyy-MM-dd");
-        Date beginDate = new Date();
-        Calendar date = Calendar.getInstance();
-        date.setTime(beginDate);
-        date.set(Calendar.DATE, date.get(Calendar.DATE) + distanceDay);
-        Date endDate = null;
-        try {
-            endDate = dft.parse(dft.format(date.getTime()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //LogUtil.d("前7天==" + dft.format(endDate));
-        Log.i("前7天==" , dft.format(endDate));
-        return dft.format(endDate);
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.new_insertaccess:
-                //Comparaent();
                 insertAccess();
-
+                copyFile(oldPath,newPath);
                 break;
             case R.id.new_onclickbtn:
                 ClickListerEntity clickListerEntity=new ClickListerEntity();
@@ -238,8 +172,6 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void insertAccess() {
-
-
         AccessTimeEntity accessTimeEntity=new AccessTimeEntity();
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
         Calendar c = Calendar.getInstance();
@@ -252,19 +184,18 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         PackageManager packageManager=getPackageManager();
         try {
             PackageInfo info=packageManager.getPackageInfo(getPackageName(),0);
-            String vision=info.versionName;
-            accessTimeEntity.setPhoneType(vision);
-            accessTimeEntity.setWhichSystem(vision);
-            accessTimeEntity.setTotalTime("00");
-            Thread t = Thread.currentThread();
-            accessTimeEntity.setThreadName(t.getName());
+            accessTimeEntity.setPhoneType(info.versionName);
+            accessTimeEntity.setWhichSystem(info.versionName);
+            accessTimeEntity.setTotalTime("111100");
+            accessTimeEntity.setThreadName(Thread.currentThread().getName());
             accessTimeEntity.setWhichPage(context.getPackageName());
-            int ai=0;
-            double j=Math.random()*1000;//random（）生成0到1的随机数
-            ai=((int)j)%testName.length;
-            System.out.println("测试人员="+testName[ai]);
-            accessTimeEntity.setWhichUser(testName[ai]);
+            Random random = new Random();//创建随机对象
+            int len = testName.length;//获取数组长度给变量len
+            int arrIdx = random.nextInt(len);//随机数组索引，nextInt(len-1)表示随机整数[0,(len-1)]之间的值
+            System.out.println("测试人员="+testName[arrIdx]);
+            accessTimeEntity.setWhichUser(testName[arrIdx]);
             fourPresenterImp.insertFour(accessTimeEntity);
+            Toast.makeText(this,"插入acess数据成功",Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             e.printStackTrace();
