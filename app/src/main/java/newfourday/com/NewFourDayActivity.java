@@ -50,7 +50,11 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     private Button new_insertaccess,new_onclickbtn,new_headbtn,new_httpbtn;
     long atime,btime;
     private String[] testName={"test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11",
-    "test12","test13","test14","test15","test16","test17","test18","test19","test20"};
+            "test12","test13","test14","test15","test16","test17","test18","test19","test20"};
+    private String[] phoneType={"android","ios"};
+    private String[] whichStylem={"8.0","7.1.1","7.0","6.1.0","5.0","4.0"};
+    Random random ;
+    int len,lenb,lenc;
     private Context context;
     String testname,datetime;
     private RecyclerView recy_one;
@@ -58,6 +62,7 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     private List<AccessTimeEntity> lists=new ArrayList<>();
     private FourPresenterImp fourPresenterImp;
     private ClickListerDao clickListerDao;
+    private NewAccessDao newAccessDao;
     String DATABASE_NAME = "four.db";
 
     String oldPath = "data/data/com.fx.keepmoving/databases/" + DATABASE_NAME;
@@ -70,7 +75,12 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fouractivity_main);
         clickListerDao=App.getFourdatabase().clickListerDao();
+        newAccessDao= App.getFourdatabase().newAccessDao();
         context=this;
+        random = new Random();//创建随机对象
+        lenb=phoneType.length;
+        lenc=whichStylem.length;
+        len = testName.length;//获取数组长度给变量len
         initView();
 
     }
@@ -126,7 +136,7 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-       // fourPresenterImp.queryFour();
+        // fourPresenterImp.queryFour();
     }
 
 
@@ -138,29 +148,7 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
                 copyFile(oldPath,newPath);
                 break;
             case R.id.new_onclickbtn:
-                ClickListerEntity clickListerEntity=new ClickListerEntity();
-                SimpleDateFormat sfa = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-                Calendar c = Calendar.getInstance();
-                clickListerEntity.setWhatClickTime(sfa.format(c.getTime()));
-                clickListerEntity.setBtnText(new_onclickbtn.getText().toString());
-                clickListerEntity.setWhichPage(context.getPackageName());
-                clickListerEntity.setWhichThread(Thread.currentThread().getName().toString());
-                int aib=0;
-                double jb=Math.random()*1000;//random（）生成0到1的随机数
-                aib=((int)jb)%testName.length;
-                clickListerEntity.setTestUser(testName[aib]);
-                try {
-                    PackageInfo info=getPackageManager().getPackageInfo(getPackageName(),0);
-                    clickListerEntity.setPhoneType(info.versionName);
-                    clickListerEntity.setWhichSystem(info.versionName);
-                    clickListerEntity.setWhereBtn(new_onclickbtn.getPrivateImeOptions());
-                    clickListerEntity.setWhichMethod(Thread.currentThread().getStackTrace().toString());
-                    clickListerDao.insertClickLister(clickListerEntity);
-                    System.out.print("click插入数据库成功");
-                    Toast.makeText(context,"click数据插入数据库成功",Toast.LENGTH_LONG).show();
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                }
+                insertClick();
                 break;
             case R.id.new_headbtn:
                 String a=null;
@@ -171,35 +159,92 @@ public class NewFourDayActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void insertAccess() {
-        AccessTimeEntity accessTimeEntity=new AccessTimeEntity();
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar c = Calendar.getInstance();
-        System.out.println("当前日期："+sf.format(c.getTime()));
-        nowTime=sf.format(c.getTime());
-        accessTimeEntity.setStartTime(nowTime);
-        SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar cd = Calendar.getInstance();
-        accessTimeEntity.setResurmTime(sfd.format(cd.getTime()));
-        PackageManager packageManager=getPackageManager();
-        try {
-            PackageInfo info=packageManager.getPackageInfo(getPackageName(),0);
-            accessTimeEntity.setPhoneType(info.versionName);
-            accessTimeEntity.setWhichSystem(info.versionName);
-            accessTimeEntity.setTotalTime("111100");
-            accessTimeEntity.setThreadName(Thread.currentThread().getName());
-            accessTimeEntity.setWhichPage(context.getPackageName());
-            Random random = new Random();//创建随机对象
-            int len = testName.length;//获取数组长度给变量len
-            int arrIdx = random.nextInt(len);//随机数组索引，nextInt(len-1)表示随机整数[0,(len-1)]之间的值
-            System.out.println("测试人员="+testName[arrIdx]);
-            accessTimeEntity.setWhichUser(testName[arrIdx]);
-            fourPresenterImp.insertFour(accessTimeEntity);
-            Toast.makeText(this,"插入acess数据成功",Toast.LENGTH_LONG).show();
+    private void insertClick() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0;i<3000;i++){
+                    ClickListerEntity clickListerEntity=new ClickListerEntity();
+                    SimpleDateFormat sfa = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+                    Calendar c = Calendar.getInstance();
+                    c.add(Calendar.DAY_OF_MONTH, -120);
+                    try {
+                        btime = sfa.parse(sfa.format(c.getTime())).getTime();//四个月前日期的毫秒值
+                        long re=System.currentTimeMillis()-btime;
+                        long a =(long) (btime+Math.random()*re);
+                        clickListerEntity.setWhatClickTime(sfa.format(new Date(a)));
+                        clickListerEntity.setBtnText(new_onclickbtn.getText().toString());
+                        clickListerEntity.setWhichPage(context.getPackageName());
+                        clickListerEntity.setWhichThread(Thread.currentThread().getName().toString());
+                        clickListerEntity.setTestUser(testName[random.nextInt(len)]);
+                        clickListerEntity.setPhoneType(phoneType[random.nextInt(lenb)]);
+                        clickListerEntity.setWhichSystem(whichStylem[random.nextInt(lenc)]);
+                        clickListerEntity.setWhereBtn(new_onclickbtn.getPrivateImeOptions());
+                        clickListerEntity.setWhichMethod(Thread.currentThread().getStackTrace().toString());
+                        clickListerDao.insertClickLister(clickListerEntity);
+                        System.out.print("click插入数据库成功");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        Toast.makeText(context,"click数据插入数据库成功",Toast.LENGTH_LONG).show();
+    }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void insertAccess() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0;i<3000;i++){
+                    AccessTimeEntity accessTimeEntity=new AccessTimeEntity();
+                    Long begin = new Date().getTime();
+                    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Calendar c = Calendar.getInstance();
+                    System.out.println("当前日期："+sf.format(c.getTime()));
+                    try {
+                        c.add(Calendar.DAY_OF_MONTH, -120);
+                        btime = sf.parse(sf.format(c.getTime())).getTime();//四个月前日期的毫秒值
+                        long re=System.currentTimeMillis()-btime;
+                        long a =(long) (btime+Math.random()*re);
+                        accessTimeEntity.setStartTime(sf.format(new Date(a)));
+                        Date date = null;
+                        try {
+                            date = sf.parse(sf.format(new Date(a)));
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        cal.add(Calendar.MINUTE, 5);// 24小时制
+                        date = cal.getTime();
+                        accessTimeEntity.setResurmTime(sf.format(date));
+                        accessTimeEntity.setPhoneType(phoneType[random.nextInt(lenb)]);
+                        accessTimeEntity.setWhichSystem(whichStylem[random.nextInt(lenc)]);
+                        accessTimeEntity.setTotalTime("00:05:00");
+                        accessTimeEntity.setThreadName(Thread.currentThread().getName());
+                        accessTimeEntity.setWhichPage(context.getPackageName());
+
+                        int arrIdx = random.nextInt(len);//随机数组索引，nextInt(len-1)表示随机整数[0,(len-1)]之间的值
+                        System.out.println("测试人员="+testName[arrIdx]);
+                        accessTimeEntity.setWhichUser(testName[arrIdx]);
+
+                        newAccessDao.insertNewAccessTime(accessTimeEntity);
+                        // 结束时间
+                        Long end = new Date().getTime();
+                        // 耗时
+                        System.out.println("3000条数据插入花费时间 : " + (end - begin) / 1000 + " s"+"  插入完成");
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }}
+        }).start();
+
+        Toast.makeText(this,"插入acess数据成功",Toast.LENGTH_LONG).show();
+
+
     }
 
 

@@ -10,6 +10,7 @@ import com.cn.room.activity.RoomActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 
 import entity.HandleDealWithEntity;
 import newfourday.com.dao.HandleDealWithDao;
@@ -24,7 +25,8 @@ public class ClickCrashHandler implements Thread.UncaughtExceptionHandler{
     private Context mContext;
     private static String TAG="CrashHandler";
     private HandleDealWithDao dealWithDao;
-    private String[] testName={"test1","test2","test3","test4","test5","test6"};
+    private String[] testName={"test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11",
+            "test12","test13","test14","test15","test16","test17","test18","test19","test20"};
     private String[]  phoneType={"android","ios"};
 
     public ClickCrashHandler(Context mContext) {
@@ -37,27 +39,36 @@ public class ClickCrashHandler implements Thread.UncaughtExceptionHandler{
     }
 
     @Override
-    public void uncaughtException(Thread t, Throwable e) {
+    public void uncaughtException(final Thread t,final Throwable e) {
         if (mDefaultHandler != null) {
 //            mDefaultHandler.uncaughtException(t, e);
             e.printStackTrace();
             Log.e(TAG, t.getName() + "" + e.getLocalizedMessage());
-            HandleDealWithEntity dealWithEntity=new HandleDealWithEntity();
-            SimpleDateFormat sfa = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-            Calendar c = Calendar.getInstance();
-            dealWithEntity.setHandleTime(sfa.format(c.getTime()));
-            dealWithEntity.setHandlePage(mContext.getPackageName());
-            dealWithEntity.setHanldeMethod(Thread.currentThread().getStackTrace().toString());
-            dealWithEntity.setWhichThread(t.getName());
-            dealWithEntity.setWhatHandle(Thread.currentThread().getName());
-            int aib=0;
-            double jb=Math.random()*1000;//random（）生成0到1的随机数
-            aib=((int)jb)%testName.length;
-            dealWithEntity.setTestUser(testName[aib]);
-            dealWithEntity.setPhoneType(phoneType[aib]);
-            dealWithEntity.setWhichSystem("5.1.0");
-            dealWithEntity.setWhichCaozuo(e.getMessage());
-            dealWithDao.insertHandleDeal(dealWithEntity);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i=0;i<3000;i++){
+                        HandleDealWithEntity dealWithEntity=new HandleDealWithEntity();
+                        SimpleDateFormat sfa = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+                        Calendar c = Calendar.getInstance();
+                        dealWithEntity.setHandleTime(sfa.format(c.getTime()));
+                        dealWithEntity.setHandlePage(mContext.getPackageName());
+                        dealWithEntity.setHanldeMethod(Thread.currentThread().getStackTrace().toString());
+                        dealWithEntity.setWhichThread(t.getName());
+                        dealWithEntity.setWhatHandle(Thread.currentThread().getName());
+                        Random random = new Random();//创建随机对象
+                        int len = testName.length;//获取数组长度给变量len
+                        int arrIdx = random.nextInt(len);
+                        dealWithEntity.setTestUser(testName[arrIdx]);
+                        dealWithEntity.setPhoneType(phoneType[random.nextInt(phoneType.length)]);
+                        dealWithEntity.setWhichSystem("5.1.0");
+                        dealWithEntity.setWhichCaozuo(e.getMessage());
+                        dealWithDao.insertHandleDeal(dealWithEntity);
+                    }
+                }
+            }).start();
+
+
         }
         Process.killProcess(Process.myPid());
         System.exit(0);
