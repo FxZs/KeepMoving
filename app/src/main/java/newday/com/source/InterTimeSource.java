@@ -2,6 +2,7 @@ package newday.com.source;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import newday.com.moudle.InterTimeEntity;
 
 /**
@@ -10,5 +11,5 @@ import newday.com.moudle.InterTimeEntity;
 
 public interface InterTimeSource {
     void insertInterTimeSource(InterTimeEntity interTimeEntity);
-    List<InterTimeEntity>  queryInterSource();
+    Flowable< List<InterTimeEntity>> queryInterSource();
 }

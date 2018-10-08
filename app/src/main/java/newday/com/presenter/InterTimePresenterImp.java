@@ -2,6 +2,11 @@ package newday.com.presenter;
 
 import com.cn.room.activity.App;
 
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import newday.com.moudle.InterTimeEntity;
 import newday.com.source.InterTimeLocalSource;
 import newday.com.view.InterTimeView;
@@ -27,7 +32,15 @@ public class InterTimePresenterImp implements InterTimePresenter{
 
     @Override
     public void queryInterTimePresenter() {
-          interTimeView.showMsg(interTimeLocalSource.queryInterSource());
+       interTimeLocalSource.queryInterSource()
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(new Consumer<List<InterTimeEntity>>() {
+                   @Override
+                   public void accept(List<InterTimeEntity> interTimeEntities) throws Exception {
+                       interTimeView.showMsg(interTimeEntities);
+                   }
+               });
     }
 
     @Override

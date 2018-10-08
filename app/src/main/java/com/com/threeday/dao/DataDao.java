@@ -8,6 +8,8 @@ import com.com.threeday.Data;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
 /**
  * Created by zhangpingzhen on 2018/7/12.
  */
@@ -18,5 +20,5 @@ public interface DataDao {
     void insertData(Data mdata);
     //从数据库中查数据
     @Query("SELECT*FROM Data")
-    List<Data> QueryData();
+     Flowable<List<Data>> QueryData();
 }

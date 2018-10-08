@@ -2,6 +2,7 @@ package newday.com.source;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import newday.com.dao.InterTimeDao;
 import newday.com.moudle.InterTimeEntity;
 
@@ -22,7 +23,7 @@ public class InterTimeLocalSource implements InterTimeSource{
     }
 
     @Override
-    public List<InterTimeEntity> queryInterSource() {
+    public Flowable<List<InterTimeEntity>> queryInterSource() {
         return interTimeDao.queryInterTime();
     }
 }

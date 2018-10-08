@@ -13,15 +13,19 @@ import newfourday.com.NewAccessDao;
 import newfourday.com.dao.ClickListerDao;
 import newfourday.com.dao.HandleDealWithDao;
 import newfourday.com.dao.HttpEntityDao;
+import rxjavalian.dao.RxjavaDao;
+import rxjavalian.entity.RxjavaEntity;
 
 /**
  * Created by Administrator on 2018/9/12.
  */
-@Database(entities ={AccessTimeEntity.class, ClickListerEntity.class, HandleDealWithEntity.class} ,version = 1)
+@Database(entities ={AccessTimeEntity.class, ClickListerEntity.class, HandleDealWithEntity.class, RxjavaEntity.class} ,version = 1)
 public abstract class Fourdatabase extends RoomDatabase{
       public  abstract NewAccessDao newAccessDao();
 
       public abstract ClickListerDao clickListerDao();
       public abstract HandleDealWithDao handleDealWithDao();
+
+      public abstract RxjavaDao rxjavaDao();
      // public  abstract HttpEntityDao httpEntityDao();
 }

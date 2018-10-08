@@ -5,6 +5,13 @@ import com.com.tworoom.MyUser;
 import com.com.tworoom.source.MyUserLocaldatasource;
 import com.com.tworoom.view.DataView;
 
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by zhangpingzhen on 2018/7/11.
  */
@@ -28,7 +35,12 @@ public class Datapresenterimp implements datapresenter{
 
     @Override
     public void dudatashuju() {
-      dataView.showData(datasource.HuoquData());
+        datasource.HuoquData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(myUsers -> dataView.showData(myUsers));
+
+
     }
 
     @Override

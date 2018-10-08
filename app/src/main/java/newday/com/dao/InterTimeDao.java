@@ -6,6 +6,7 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import newday.com.moudle.InterTimeEntity;
 
 /**
@@ -17,5 +18,5 @@ public interface InterTimeDao {
     void insertInterTime(InterTimeEntity interTimeEntity);
 
     @Query("SELECT*FROM interTimeEntity")
-    List<InterTimeEntity> queryInterTime();
+      Flowable< List<InterTimeEntity>> queryInterTime();
 }

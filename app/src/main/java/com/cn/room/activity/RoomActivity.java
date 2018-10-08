@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ import com.elevenday.ElevenActivity;
 import com.sixday.RetorActivity;
 import com.sixday.SixActivity;
 
+import designoneday.DesignActivity;
+import designoneday.TextViewActivity;
 import newday.com.MainActivityNewDay;
 import newfourday.com.NewFourDayActivity;
 
@@ -34,7 +39,7 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
      private PresenterImp presenterImp;
      private User user;
      private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,
-             sixBtn,eleventBtn,retoBtn,interBtn,newFourBtn;
+             sixBtn,eleventBtn,retoBtn,interBtn,newFourBtn,design_btn,textview_btn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +54,6 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        starttime=findViewById(R.id.starttime);
-        stoptime=findViewById(R.id.stoptime);
-        counttime=findViewById(R.id.counttime);
-        btnxiayibu=findViewById(R.id.btnxiayibu);
 
         tworoombtn=findViewById(R.id.Tworoombtn);
         threeroombtn=findViewById(R.id.Threeroombtn);
@@ -72,6 +73,10 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
         fiveroombtn.setOnClickListener(this);
         newFourBtn=findViewById(R.id.newFourBtn);
         newFourBtn.setOnClickListener(this);
+        design_btn=findViewById(R.id.design_btn);
+        design_btn.setOnClickListener(this);
+        textview_btn=findViewById(R.id.textview_btn);
+        textview_btn.setOnClickListener(this);
     }
 
     @Override
@@ -130,6 +135,15 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentad=new Intent(RoomActivity.this, NewFourDayActivity.class);
                 startActivity(intentad);
                 break;
+            case R.id.design_btn:
+                Intent intentae=new Intent(RoomActivity.this, DesignActivity.class);
+                startActivity(intentae);
+                break;
+            case R.id.textview_btn:
+                Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
+                startActivity(intentaf);
+                break;
+
         }
     }
 }

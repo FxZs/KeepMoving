@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".App">
+
+
         <activity android:name=".RoomActivity">
 
             <intent-filter>
@@ -32,6 +34,9 @@
         <activity android:name="com.sixday.RetorActivity"/>
         <activity android:name="newday.com.MainActivityNewDay"/>
         <activity android:name="newfourday.com.NewFourDayActivity"/>
+        <activity android:name="designoneday.DesignActivity"/>
+        <activity android:name="designoneday.TextViewActivity"/>
+        <activity android:name="rxjavalian.RxJavaTest"/>
     </application>
 
 </manifest>

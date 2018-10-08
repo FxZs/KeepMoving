@@ -17,6 +17,6 @@ public interface NewAccessDao {
     void insertNewAccessTime(AccessTimeEntity accessTimeEntity);
     @Query("select*from accessT")
     List<AccessTimeEntity> queryNewAccessTime();
-    @Query("select*from accessT where phoneType=android")
-    List<AccessTimeEntity> queryPhoneType(String phoneType);
+    /*@Query("select*from accessT where phoneType=android")
+    List<AccessTimeEntity> queryPhoneType(String phoneType);*/
 }
