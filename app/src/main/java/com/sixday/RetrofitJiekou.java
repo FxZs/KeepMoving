@@ -17,6 +17,6 @@ import retrofit2.http.QueryMap;
  */
 
 public interface RetrofitJiekou {
-    @POST("insertaccess")
-    Observable<RequestBody> getMsg(@QueryMap Map<String,Object> dedata);
+    @POST("access/insert")
+    Observable<Object> getMsg(@QueryMap Map<String,Object> dedata);
 }

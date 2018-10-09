@@ -1,5 +1,7 @@
 package com.sixday.http;
 
+import android.util.Log;
+
 import com.sixday.RetrofitJiekou;
 import com.sixday.moudle.ClickEntity;
 
@@ -7,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observer;
@@ -37,7 +40,7 @@ public class OkHttponeday {
     public void insert(Map<String, Object> map, String url) {
 
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.8.222:8088/access/")
+                .baseUrl("http://192.168.1.109:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
@@ -45,11 +48,25 @@ public class OkHttponeday {
         retrofitJiekou.getMsg(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<RequestBody>() {
+                .subscribe(new Observer<Object>() {
                     @Override
-                    public void accept(RequestBody body) throws Exception {
+                    public void onSubscribe(Disposable d) {
 
-                           System.out.print(body.toString());
+                    }
+
+                    @Override
+                    public void onNext(Object s) {
+                        Log.i("aaaaaaaaaaaaaa",s.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
 
