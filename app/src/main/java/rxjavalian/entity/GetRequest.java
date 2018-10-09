@@ -3,6 +3,7 @@ package rxjavalian.entity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.cn.room.activity.R;
 
@@ -47,6 +48,13 @@ setContentView(R.layout.rxjava_activity);
 
     private void a() {
 
+        Observable.interval(500,TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        Log.e("TAGaaa", "" + aLong);
+                    }
+                });
 
     }
 
