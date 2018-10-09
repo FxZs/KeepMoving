@@ -15,7 +15,7 @@ import rxjavalian.entity.RxjavaEntity;
  */
 @Dao
 public interface RxjavaDao {
-    @Insert
+   /* @Insert
     void  insertRxJava(RxjavaEntity rxjavaEntity);
     @Insert
     void insertRxJavaList(List<RxjavaEntity> rxjavaEntities);
@@ -29,5 +29,5 @@ public interface RxjavaDao {
     void delectRxjavalist(List<RxjavaEntity> rxjavaEntities);
     @Update
     void updataRxjava(RxjavaEntity rxjavaEntity);
-
+*/
 }

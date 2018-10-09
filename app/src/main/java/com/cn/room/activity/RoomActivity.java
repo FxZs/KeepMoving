@@ -28,6 +28,8 @@ import designoneday.DesignActivity;
 import designoneday.TextViewActivity;
 import newday.com.MainActivityNewDay;
 import newfourday.com.NewFourDayActivity;
+import rxjavalian.RxJavaTest;
+import rxjavalian.entity.GetRequest;
 
 
 /**
@@ -140,7 +142,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentae);
                 break;
             case R.id.textview_btn:
-                Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
+                //Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
+                Intent intentaf=new Intent(RoomActivity.this, GetRequest.class);
                 startActivity(intentaf);
                 break;
 

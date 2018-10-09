@@ -25,7 +25,7 @@ import okhttp3.Response;
  */
 
 public class SixAccessNetSource implements SixAccessSource{
-private String url="http://192.168.8.222:8088/access/insertaccess";
+private String url="http://192.168.8.222:8088/access/";
     @Override
     public void insertAccessSource(final AccessEntity accessEntity) {
 
