@@ -3,5 +3,10 @@
     <color name="colorPrimary">#ccc</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorbottom">#ffffff</color>
+    <color name="whrite">#ffffff</color>
+    <color name="shenblue">#3773d7</color>
+    <color name="qianblue">#709ae1</color>
+    <color name="bag">#f5f5f5</color>
+    <color name="huise">#c6c6c6</color>
+    <color name="qianhuis">#e6e6e6</color>
 </resources>

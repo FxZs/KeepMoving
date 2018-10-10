@@ -42,6 +42,7 @@
         <activity android:name="designoneday.TextViewActivity"/>
         <activity android:name="rxjavalian.RxJavaTest"/>
         <activity android:name="rxjavalian.entity.GetRequest"/>
+        <activity android:name="newtenday.LoginActivity"/>
     </application>
 
 </manifest>

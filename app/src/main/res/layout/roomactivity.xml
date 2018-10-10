@@ -89,6 +89,11 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:hint="textviewactivity"/>
+        <Button
+            android:id="@+id/ten_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:hint="tenactivity"/>
     </LinearLayout>
 
 </LinearLayout>

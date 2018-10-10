@@ -28,6 +28,7 @@ import designoneday.DesignActivity;
 import designoneday.TextViewActivity;
 import newday.com.MainActivityNewDay;
 import newfourday.com.NewFourDayActivity;
+import newtenday.LoginActivity;
 import rxjavalian.RxJavaTest;
 import rxjavalian.entity.GetRequest;
 
@@ -41,7 +42,7 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
      private PresenterImp presenterImp;
      private User user;
      private Button btnxiayibu,tworoombtn,threeroombtn,fourroombtn,fiveroombtn,
-             sixBtn,eleventBtn,retoBtn,interBtn,newFourBtn,design_btn,textview_btn;
+             sixBtn,eleventBtn,retoBtn,interBtn,newFourBtn,design_btn,textview_btn,ten_btn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +80,8 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
         design_btn.setOnClickListener(this);
         textview_btn=findViewById(R.id.textview_btn);
         textview_btn.setOnClickListener(this);
+        ten_btn=findViewById(R.id.ten_btn);
+        ten_btn.setOnClickListener(this);
     }
 
     @Override
@@ -145,6 +148,11 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
                 //Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
                 Intent intentaf=new Intent(RoomActivity.this, GetRequest.class);
                 startActivity(intentaf);
+                break;
+            case R.id.ten_btn:
+                //Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
+                Intent intentah=new Intent(RoomActivity.this, LoginActivity.class);
+                startActivity(intentah);
                 break;
 
         }

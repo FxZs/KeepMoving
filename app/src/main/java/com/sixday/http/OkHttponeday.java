@@ -40,7 +40,7 @@ public class OkHttponeday {
     public void insert(Map<String, Object> map, String url) {
 
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.109:8080/")
+                .baseUrl("http://192.168.8.222:8088/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
