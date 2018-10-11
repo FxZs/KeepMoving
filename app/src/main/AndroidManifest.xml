@@ -43,6 +43,7 @@
         <activity android:name="rxjavalian.RxJavaTest"/>
         <activity android:name="rxjavalian.entity.GetRequest"/>
         <activity android:name="newtenday.LoginActivity"/>
+        <activity android:name="newtenday.NewTenActivity"/>
     </application>
 
 </manifest>

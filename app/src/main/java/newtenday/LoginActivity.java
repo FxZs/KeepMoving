@@ -1,5 +1,6 @@
 package newtenday;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -67,6 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void showLoginSuccessfulMeg(String msg) {
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(this,NewTenActivity.class);
+        startActivity(intent);
     }
 
     @Override
