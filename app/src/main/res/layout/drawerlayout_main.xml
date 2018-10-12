@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_height="match_parent"
+    android:layout_width="150dp">
+    <FrameLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+    <!--
+    app:menu：设置menu xml布局
+    app:headerLayout=""：设置侧滑栏顶部布局
+    android:layout_gravity=""：设置导航栏的位置，left|right
+    -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/drawer_navigation"
+        android:layout_width="480dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"/>
+
+
+
+</android.support.v4.widget.DrawerLayout>

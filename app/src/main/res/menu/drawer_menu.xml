@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 子菜单 -->
+    <item
+        android:id="@+id/settinhys"
+        android:title="原生">
+        <menu>
+            <item
+                android:id="@+id/accent"
+                android:checkable="true"
+                android:title="   页面访问时间"/>
+            <item
+                android:id="@+id/click"
+                android:checkable="true"
+                android:title="   按钮点击时间"/>
+            <item
+                android:id="@+id/yichang"
+                android:checkable="true"
+                android:title="   异常捕获"/>
+        </menu>
+    </item>
+    <!-- 子菜单 -->
+    <item
+        android:id="@+id/settingweb"
+        android:title="WebView">
+        <menu>
+            <item
+                android:id="@+id/accenta"
+                android:checkable="true"
+                android:title="   页面访问时间"/>
+            <item
+                android:id="@+id/clicka"
+                android:checkable="true"
+                android:title="   按钮点击时间"/>
+            <item
+                android:id="@+id/yichanga"
+                android:checkable="true"
+                android:title="   异常捕获"/>
+        </menu>
+    </item>
+
+
+</menu>

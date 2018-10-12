@@ -9,5 +9,18 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="CustomNoActionBarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:textColor">@color/whrite</item>
+        <item name="drawerArrowStyle">@style/CustomNoActionBarTheme.drawerArrowStyle</item>
+        <item name="colorPrimary">@color/whrite</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--设置导航箭头的样式-->
+    <style name="CustomNoActionBarTheme.drawerArrowStyle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="android:color">@color/whrite</item>
+    </style>
+
 
 </resources>

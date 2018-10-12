@@ -2,17 +2,19 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/whrite">
+    >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/whrite">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="50dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/newten_one"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
@@ -25,9 +27,10 @@
         android:layout_height="50dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/newten_two"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="啦啦"
+            android:text="次数"
             android:textSize="16dp"
             android:gravity="center"/>
     </LinearLayout>
@@ -37,11 +40,12 @@
         android:layout_height="50dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/newten_three"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
             android:textSize="16dp"
-            android:text="哈哈"/>
+            android:text="异常"/>
     </LinearLayout>
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KeepMoving</string>
+    <string name="user_name">测试人员</string>
+    <string name="user_phone">手机类型</string>
+    <string name="user_type">手机版本</string>
+    <string name="use_starttime">开始时间</string>
+    <string name="user_stoptime">结束时间</string>
 </resources>

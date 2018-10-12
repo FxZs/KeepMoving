@@ -21,6 +21,7 @@ import com.sixday.handle.SixCrashHandler;
 
 import newfourday.com.ClickCrashHandler;
 import newfourday.com.base.Fourdatabase;
+import newtenday.database.NewTenDataBase;
 import newthreeday.com.handle.CrashHandler;
 
 /**
@@ -43,6 +44,7 @@ public class App extends Application{
     private static SixHandleBase sixHandleBase;
     private static RetorDatabase retorDatabase;
     private static Fourdatabase fourdatabase;
+    private static NewTenDataBase newTenDataBase;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -75,6 +77,7 @@ public class App extends Application{
      sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
    retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_2_3).build();
    fourdatabase=Room.databaseBuilder(this,Fourdatabase.class,"four.db").allowMainThreadQueries().build();
+   newTenDataBase=Room.databaseBuilder(this,NewTenDataBase.class,"newten.db").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {
@@ -124,5 +127,9 @@ public class App extends Application{
 
     public static Fourdatabase getFourdatabase() {
         return fourdatabase;
+    }
+
+    public static NewTenDataBase getNewTenDataBase() {
+        return newTenDataBase;
     }
 }

@@ -29,6 +29,7 @@ import designoneday.TextViewActivity;
 import newday.com.MainActivityNewDay;
 import newfourday.com.NewFourDayActivity;
 import newtenday.LoginActivity;
+import newtenday.NewTenActivity;
 import rxjavalian.RxJavaTest;
 import rxjavalian.entity.GetRequest;
 
@@ -151,7 +152,7 @@ public class RoomActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ten_btn:
                 //Intent intentaf=new Intent(RoomActivity.this, TextViewActivity.class);
-                Intent intentah=new Intent(RoomActivity.this, LoginActivity.class);
+                Intent intentah=new Intent(RoomActivity.this, NewTenActivity.class);
                 startActivity(intentah);
                 break;
 
