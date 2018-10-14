@@ -1,6 +1,7 @@
 package newtenday;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,21 +14,19 @@ import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cn.room.activity.R;
-import com.fx.keepmoving.MainActivity;
 
 import java.lang.reflect.Field;
 
 import newtenday.firstfunction.fragment.FirstFunctionFragment;
 import newtenday.firstfunction.presenter.FirstAccessTimePresenterImp;
+import newtenday.twofunction.fragment.TwoClickFragment;
 
 /**
  * Created by zhangpingzhen on 2018/10/11.
@@ -41,6 +40,7 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
     private ActionBarDrawerToggle drawerToggle;
     private boolean flag;
     private FirstFunctionFragment firstFragment;
+    private TwoClickFragment twoClickFragment;
     private TextView first_one,first_two,first_three;
 
     @Override
@@ -62,6 +62,9 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
         hideFragment(transaction);
         switch (index){
             case 0:
+                first_one.setTextColor(0xff1B940A);
+                first_two.setTextColor(Color.parseColor("#686868"));
+                first_three.setTextColor(Color.parseColor("#686868"));
                 if (firstFragment==null){
                     firstFragment=new FirstFunctionFragment();
                     transaction.add(R.id.newten_frame,firstFragment);
@@ -70,6 +73,17 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 new FirstAccessTimePresenterImp(firstFragment);
                 break;
+            case 1:
+                first_two.setTextColor(0xff1B940A);
+                first_one.setTextColor(Color.parseColor("#686868"));
+                first_three.setTextColor(Color.parseColor("#686868"));
+                if(twoClickFragment==null){
+                    twoClickFragment=new TwoClickFragment();
+                    transaction.add(R.id.newten_frame,twoClickFragment);
+                }else{
+                    transaction.show(twoClickFragment);
+                }
+                break;
         }
         transaction.commit();
     }
@@ -77,6 +91,9 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
     private void hideFragment(FragmentTransaction transaction) {
         if (firstFragment!=null){
             transaction.hide(firstFragment);
+        }
+        if (twoClickFragment!=null){
+            transaction.hide(twoClickFragment);
         }
     }
 
@@ -89,7 +106,21 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(NewTenActivity.this,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()){
+                    case R.id.accent:
+                        initFragment(0);
+                        break;
+                    case R.id.click:
+                        initFragment(1);
+                        break;
+                    case R.id.yichang:
+                        first_three.setTextColor(0xff1B940A);
+                        first_two.setTextColor(Color.parseColor("#686868"));
+                        first_one.setTextColor(Color.parseColor("#686868"));
+                        initFragment(2);
+                        break;
+                }
+                item.setChecked(true);
                 drawerLayout.closeDrawer(navigationView);
                 return true;
             }
@@ -157,12 +188,20 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.newten_one:
                 first_one.setTextColor(0xff1B940A);
+                first_two.setTextColor(Color.parseColor("#686868"));
+                first_three.setTextColor(Color.parseColor("#686868"));
                 initFragment(0);
                 break;
             case R.id.newten_two:
+                first_two.setTextColor(0xff1B940A);
+                first_one.setTextColor(Color.parseColor("#686868"));
+                first_three.setTextColor(Color.parseColor("#686868"));
                 initFragment(1);
                 break;
             case R.id.newten_three:
+                first_three.setTextColor(0xff1B940A);
+                first_one.setTextColor(Color.parseColor("#686868"));
+                first_two.setTextColor(Color.parseColor("#686868"));
                 initFragment(2);
                 break;
         }

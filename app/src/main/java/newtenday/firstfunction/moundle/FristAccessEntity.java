@@ -9,7 +9,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "firstAccessT")
 public class FristAccessEntity {
     @PrimaryKey
-    private int id;
+    private Integer id;
 
     private String startTime;
     private String resurmTime;//离开时间
@@ -20,11 +20,11 @@ public class FristAccessEntity {
     private String threadName;//是否主线程
     private String whichPage;//哪个页面
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

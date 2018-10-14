@@ -61,7 +61,13 @@ public class App extends Application{
                     + " ADD COLUMN phone_num TEXT");
         }
     };
-
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE department "
+                    + " ADD COLUMN phone_num TEXT");
+        }
+    };
 
 
     private void initDb() {
@@ -77,7 +83,7 @@ public class App extends Application{
      sixHandleBase=Room.databaseBuilder(this,SixHandleBase.class,"six_handle.db").allowMainThreadQueries().build();
    retorDatabase=Room.databaseBuilder(this,RetorDatabase.class,"re.db").allowMainThreadQueries().addMigrations(MIGRATION_2_3).build();
    fourdatabase=Room.databaseBuilder(this,Fourdatabase.class,"four.db").allowMainThreadQueries().build();
-   newTenDataBase=Room.databaseBuilder(this,NewTenDataBase.class,"newten.db").allowMainThreadQueries().build();
+   newTenDataBase=Room.databaseBuilder(this,NewTenDataBase.class,"newten.db").allowMainThreadQueries().addMigrations(MIGRATION_1_2).build();
     }
 
     public static App getInstance() {

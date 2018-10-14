@@ -29,6 +29,7 @@ public class FirstAccessTimePresenterImp implements FirstAccessTimePresenter {
 
     @Override
     public void queryFirstAccessTime() {
+
         firstAccessView.showQueryData(dao.queryFirstAccess());
     }
 

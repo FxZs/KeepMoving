@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginPresenterImp implements LoginPresenter {
     private LoginView loginView;
-    String url="http://192.168.8.222:8088/";
+    String url="http://192.168.1.109:8080/";
 
     public LoginPresenterImp(LoginView loginView) {
         this.loginView = loginView;

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -48,6 +50,10 @@ public class FirstFunctionFragment extends Fragment implements FirstAccessView,V
       context=getActivity();
       firstAccessPresenterImp=new FirstAccessTimePresenterImp(this);
        first_recy=view.findViewById(R.id.first_recy);
+        //添加Android自定义的分割线
+        DividerItemDecoration divider=new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.recy_line));
+        first_recy.addItemDecoration(divider);
         first_btn=view.findViewById(R.id.first_btn);
         first_btn.setOnClickListener(this);
          first_recy.setLayoutManager(new LinearLayoutManager(context));
