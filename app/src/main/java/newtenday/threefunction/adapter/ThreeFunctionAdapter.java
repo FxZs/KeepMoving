@@ -54,7 +54,7 @@ TextView three_name,three_whathandle,three_handletime,three_whichmethod,three_pa
          holder.three_handletime.setText(threeHandleEntity.getHandleTime());
          holder.three_page.setText(threeHandleEntity.getHandlePage());
          holder.three_phone.setText(threeHandleEntity.getWhichSystem());
-         holder.three_phonetype.setText(threeHandleEntity.getWhichSystem());
+         holder.three_phonetype.setText(threeHandleEntity.getPhoneType());
          holder.three_thread.setText(threeHandleEntity.getWhichThread());
          holder.three_whathandle.setText(threeHandleEntity.getWhatHandle());
          holder.three_whichmethod.setText(threeHandleEntity.getHanldeMethod());

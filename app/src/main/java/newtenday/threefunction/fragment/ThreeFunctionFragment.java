@@ -12,10 +12,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.cn.room.activity.R;
+import com.jakewharton.rxbinding2.view.RxView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import newtenday.threefunction.adapter.ThreeFunctionAdapter;
 import newtenday.threefunction.moundle.ThreeHandleEntity;
 import newtenday.threefunction.presenter.ThreeHandlePresenter;
@@ -26,7 +33,7 @@ import newtenday.threefunction.view.ThreeHandleView;
  * Created by Administrator on 2018/10/14.
  */
 
-public class ThreeFunctionFragment extends Fragment implements ThreeHandleView{
+public class ThreeFunctionFragment extends Fragment implements ThreeHandleView,View.OnClickListener{
     private RecyclerView three_recy;
     private Button three_btn;
     private ThreeHandlePresenterImp threeHandlePresenterImp;
@@ -41,11 +48,14 @@ public class ThreeFunctionFragment extends Fragment implements ThreeHandleView{
    threeHandlePresenterImp=new ThreeHandlePresenterImp(this);
     three_recy=view.findViewById(R.id.three_recy);
     three_btn=view.findViewById(R.id.three_btn);
+    three_btn.setOnClickListener(this);
     three_recy.setLayoutManager(new LinearLayoutManager(context));
     threeFunctionAdapter=new ThreeFunctionAdapter(lists,context);
     three_recy.setAdapter(threeFunctionAdapter);
+
         return view;
     }
+
 
     @Override
     public void onResume() {
@@ -62,6 +72,16 @@ public class ThreeFunctionFragment extends Fragment implements ThreeHandleView{
 
     @Override
     public void setPresenter(ThreeHandlePresenter presenter) {
+           threeHandlePresenterImp= (ThreeHandlePresenterImp) presenter;
+    }
 
+    @Override
+    public void onClick(View v) {
+       switch (v.getId()){
+           case R.id.three_btn:
+               String a=null;
+               a.charAt(0);
+               break;
+       }
     }
 }

@@ -26,6 +26,7 @@ import java.lang.reflect.Field;
 
 import newtenday.firstfunction.fragment.FirstFunctionFragment;
 import newtenday.firstfunction.presenter.FirstAccessTimePresenterImp;
+import newtenday.threefunction.fragment.ThreeFunctionFragment;
 import newtenday.twofunction.fragment.TwoClickFragment;
 
 /**
@@ -41,6 +42,7 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
     private boolean flag;
     private FirstFunctionFragment firstFragment;
     private TwoClickFragment twoClickFragment;
+    private ThreeFunctionFragment threeFunctionFragment;
     private TextView first_one,first_two,first_three;
 
     @Override
@@ -84,6 +86,17 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
                     transaction.show(twoClickFragment);
                 }
                 break;
+            case 2:
+                first_three.setTextColor(0xff1B940A);
+                first_one.setTextColor(Color.parseColor("#686868"));
+                first_two.setTextColor(Color.parseColor("#686868"));
+                if(threeFunctionFragment==null){
+                    threeFunctionFragment=new ThreeFunctionFragment();
+                    transaction.add(R.id.newten_frame,threeFunctionFragment);
+                }else{
+                    transaction.show(threeFunctionFragment);
+                }
+                break;
         }
         transaction.commit();
     }
@@ -94,6 +107,9 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (twoClickFragment!=null){
             transaction.hide(twoClickFragment);
+        }
+        if(threeFunctionFragment!=null){
+            transaction.hide(threeFunctionFragment);
         }
     }
 
@@ -114,9 +130,6 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
                         initFragment(1);
                         break;
                     case R.id.yichang:
-                        first_three.setTextColor(0xff1B940A);
-                        first_two.setTextColor(Color.parseColor("#686868"));
-                        first_one.setTextColor(Color.parseColor("#686868"));
                         initFragment(2);
                         break;
                 }
