@@ -18,6 +18,7 @@ import okhttp3.Response;
 
 /**
  * Created by zhangpingzhen on 2018/9/11.
+ * 拦截器
  */
 
 public class MyIntercepter implements Interceptor{

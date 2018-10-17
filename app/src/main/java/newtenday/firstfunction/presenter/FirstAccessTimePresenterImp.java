@@ -15,16 +15,19 @@ import newtenday.firstfunction.view.FirstAccessView;
 public class FirstAccessTimePresenterImp implements FirstAccessTimePresenter {
      FirstAccessView firstAccessView;
      FirstAccessTimeDao dao;
+     FirstAccessNetServlet firstAccessNetServlet;
 
     public FirstAccessTimePresenterImp(FirstAccessView firstAccessView) {
         this.firstAccessView = firstAccessView;
         this.dao = App.getNewTenDataBase().firstAccessTimeDao();
         firstAccessView.setPresenter(this);
+        firstAccessNetServlet=new FirstAccessNetServlet();
     }
 
     @Override
     public void insertFirstAccessTime(FristAccessEntity fristAccessEntity) {
         dao.insertFirstAccess(fristAccessEntity);
+        firstAccessNetServlet.insertFirstAccessTime(fristAccessEntity);
     }
 
     @Override

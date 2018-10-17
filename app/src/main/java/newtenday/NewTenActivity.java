@@ -43,7 +43,7 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
     private FirstFunctionFragment firstFragment;
     private TwoClickFragment twoClickFragment;
     private ThreeFunctionFragment threeFunctionFragment;
-    private TextView first_one,first_two,first_three;
+    private TextView first_one,first_two,first_three,first_four;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -189,9 +189,11 @@ public class NewTenActivity extends AppCompatActivity implements View.OnClickLis
         first_one=findViewById(R.id.newten_one);
         first_two=findViewById(R.id.newten_two);
         first_three=findViewById(R.id.newten_three);
+        first_four=findViewById(R.id.newten_four);
         first_one.setOnClickListener(this);
         first_two.setOnClickListener(this);
         first_three.setOnClickListener(this);
+        first_four.setOnClickListener(this);
 
 
     }
