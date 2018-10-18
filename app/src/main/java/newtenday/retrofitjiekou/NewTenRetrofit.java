@@ -18,6 +18,6 @@ public interface NewTenRetrofit {
     @POST("tenClick/insert")
     Observable<Object> insertClick(@QueryMap Map<String,String> clickdata);
 
-    @POST("tenClick/insertHandle")
+    @POST("tenHandle/insert")
     Observable<Object> insertHandle(@QueryMap Map<String,String> handledata);
 }

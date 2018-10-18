@@ -15,6 +15,7 @@ import java.util.Random;
 
 import newtenday.threefunction.dao.ThreeHandleDao;
 import newtenday.threefunction.moundle.ThreeHandleEntity;
+import newtenday.threefunction.presenter.ThreeHandleNetServlet;
 
 /**
  * Created by zhangpingzhen on 2018/10/15.
@@ -28,12 +29,13 @@ public class NewTenHandle implements Thread.UncaughtExceptionHandler {
     private String[] user_name={"test01","test2","test3","test4","test5","test6","test7","test8","test9","test10"};
     private String[] phonesystem={"Android","IOS","Firefox OS","Windows Mobile","ubuntu","Sailfish OS","三星Tizen"};
     private String[] phonetype={"6.5.23","6.1.0","5.5.2","5.0.1","4.1.0","4.2.3","5.7.0","6.2.1"};
-
+    private ThreeHandleNetServlet threeHandleNetServlet;
     public NewTenHandle(Context context) {
         this.context = context;
         threeHandleDao= App.getNewTenDataBase().threeHandleDao();
         mDefaultHandler=Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
+        threeHandleNetServlet=new ThreeHandleNetServlet();
     }
 
     @Override
@@ -55,6 +57,7 @@ public class NewTenHandle implements Thread.UncaughtExceptionHandler {
                       threeHandleEntity.setWhatHandle(e.getMessage());
                       threeHandleEntity.setHanldeMethod(t.getClass()+"");
                       threeHandleDao.insertThreeHandle(threeHandleEntity);
+                      threeHandleNetServlet.insertThreeHandlePresenter(threeHandleEntity);
                   }
               }).start();
            }
