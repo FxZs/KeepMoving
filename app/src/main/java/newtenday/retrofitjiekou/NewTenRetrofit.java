@@ -14,4 +14,10 @@ import retrofit2.http.QueryMap;
 public interface NewTenRetrofit {
     @POST("tenAccess/insert")
     Observable<Object> insertNewTen(@QueryMap Map<String,String> datashuju);
+
+    @POST("tenClick/insert")
+    Observable<Object> insertClick(@QueryMap Map<String,String> clickdata);
+
+    @POST("tenClick/insertHandle")
+    Observable<Object> insertHandle(@QueryMap Map<String,String> handledata);
 }

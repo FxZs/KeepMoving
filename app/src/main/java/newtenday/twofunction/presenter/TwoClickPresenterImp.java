@@ -17,18 +17,19 @@ import newtenday.twofunction.view.TwoClickView;
 public class TwoClickPresenterImp implements TwoClickPresenter {
 private TwoClickView twoClickView;
 private TwoClickDao twoClickDao;
+private TwoClickNetServlet twoClickNetServlet;
 
     public TwoClickPresenterImp(TwoClickView twoClickView) {
         this.twoClickView = twoClickView;
        this.twoClickDao= App.getNewTenDataBase().twoClickDao();
        twoClickView.setPresenter(this);
+       twoClickNetServlet=new TwoClickNetServlet();
     }
 
     @Override
     public void insertTwoClickPresnter(TwoClickEntity twoClickEntity) {
           twoClickDao.insertTwoClick(twoClickEntity);
-
-
+            twoClickNetServlet.insertTwoClickPresnter(twoClickEntity);
     }
 
     @Override

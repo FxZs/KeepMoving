@@ -13,15 +13,18 @@ import newtenday.threefunction.view.ThreeHandleView;
 public class ThreeHandlePresenterImp implements ThreeHandlePresenter {
     private ThreeHandleView threeHandleView;
     private ThreeHandleDao threeHandleDao;
+    private ThreeHandleNetServlet threeHandleNetServlet;
 
     public ThreeHandlePresenterImp(ThreeHandleView threeHandleView) {
         this.threeHandleView = threeHandleView;
         threeHandleDao= App.getNewTenDataBase().threeHandleDao();
+        threeHandleNetServlet=new ThreeHandleNetServlet();
     }
 
     @Override
     public void insertThreeHandlePresenter(ThreeHandleEntity threeHandleEntity) {
          threeHandleDao.insertThreeHandle(threeHandleEntity);
+         threeHandleNetServlet.insertThreeHandlePresenter(threeHandleEntity);
     }
 
     @Override

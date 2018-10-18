@@ -40,18 +40,23 @@ public class NewTenHandle implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread t, Throwable e) {
            if(mDefaultHandler!=null){
                Log.e(TAG,e.getMessage());
-               ThreeHandleEntity threeHandleEntity=new ThreeHandleEntity();
-               Random random=new Random();
-               SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-               threeHandleEntity.setTestUser(user_name[random.nextInt(10)]);
-               threeHandleEntity.setPhoneType(phonetype[random.nextInt(8)]);
-               threeHandleEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
-               threeHandleEntity.setHandlePage(context.getPackageName());
-               threeHandleEntity.setWhichThread(Thread.currentThread().getName());
-               threeHandleEntity.setHandleTime(sdf.format(new Date(System.currentTimeMillis())));
-               threeHandleEntity.setWhatHandle(e.getMessage());
-               threeHandleEntity.setHanldeMethod(t.getClass()+"");
-               threeHandleDao.insertThreeHandle(threeHandleEntity);
+              new Thread(new Runnable() {
+                  @Override
+                  public void run() {
+                      ThreeHandleEntity threeHandleEntity=new ThreeHandleEntity();
+                      Random random=new Random();
+                      SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+                      threeHandleEntity.setTestUser(user_name[random.nextInt(10)]);
+                      threeHandleEntity.setPhoneType(phonetype[random.nextInt(8)]);
+                      threeHandleEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
+                      threeHandleEntity.setHandlePage(context.getPackageName());
+                      threeHandleEntity.setWhichThread(Thread.currentThread().getName());
+                      threeHandleEntity.setHandleTime(sdf.format(new Date(System.currentTimeMillis())));
+                      threeHandleEntity.setWhatHandle(e.getMessage());
+                      threeHandleEntity.setHanldeMethod(t.getClass()+"");
+                      threeHandleDao.insertThreeHandle(threeHandleEntity);
+                  }
+              }).start();
            }
         Process.killProcess(Process.myPid());
         System.exit(0);

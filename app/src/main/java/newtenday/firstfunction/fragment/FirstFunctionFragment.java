@@ -94,32 +94,43 @@ public class FirstFunctionFragment extends Fragment implements FirstAccessView,V
     }
 
     private void shujuGeneration() {
-        FristAccessEntity fristAccessEntity=new FristAccessEntity();
-        long fourtime,nowtime,suijitime;
-        Random random=new Random();
-        SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar c=Calendar.getInstance();
-        c.add(Calendar.DAY_OF_MONTH,-120);
-        try {
-            fourtime=sf.parse(sf.format(c.getTime())).getTime();//四个月前时间的毫秒值
-            nowtime=System.currentTimeMillis()-fourtime;
-            suijitime= (long) (fourtime+Math.random()*nowtime);//随机生成的时间
-            fristAccessEntity.setWhichUser(user_name[random.nextInt(10)]);
-            fristAccessEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
-            fristAccessEntity.setPhoneType(phonetype[random.nextInt(8)]);
-            fristAccessEntity.setStartTime(sf.format(new Date(suijitime)));
-           int alltime=random.nextInt(20)+1;//随机生成访问的总时间
-           //获取当前时间，获取到的时间类型是long类型的，单位是毫秒
-            //在这个基础上加上30分钟：currentTime +=30*60*1000
-              long stoptime=suijitime+alltime*60*1000;
-              fristAccessEntity.setTotalTime(alltime+"");
-              fristAccessEntity.setResurmTime(sf.format(new Date(stoptime)));
-              fristAccessEntity.setWhichPage(context.getPackageName());
-              fristAccessEntity.setThreadName(Thread.currentThread().getName());
-              firstAccessPresenterImp.insertFirstAccessTime(fristAccessEntity);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FristAccessEntity fristAccessEntity=new FristAccessEntity();
+                long fourtime,nowtime,suijitime;
+                Random random=new Random();
+                SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+                Calendar c=Calendar.getInstance();
+                c.add(Calendar.DAY_OF_MONTH,-120);
+                try {
+                    fourtime=sf.parse(sf.format(c.getTime())).getTime();//四个月前时间的毫秒值
+                    nowtime=System.currentTimeMillis()-fourtime;
+                    suijitime= (long) (fourtime+Math.random()*nowtime);//随机生成的时间
+                    fristAccessEntity.setWhichUser(user_name[random.nextInt(10)]);
+                    fristAccessEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
+                    fristAccessEntity.setPhoneType(phonetype[random.nextInt(8)]);
+                    fristAccessEntity.setStartTime(sf.format(new Date(suijitime)));
+                    int alltime=random.nextInt(20)+1;//随机生成访问的总时间
+                    //获取当前时间，获取到的时间类型是long类型的，单位是毫秒
+                    //在这个基础上加上30分钟：currentTime +=30*60*1000
+                    long stoptime=suijitime+alltime*60*1000;
+                    fristAccessEntity.setTotalTime(alltime+"");
+                    fristAccessEntity.setResurmTime(sf.format(new Date(stoptime)));
+                    fristAccessEntity.setWhichPage(context.getPackageName());
+                    fristAccessEntity.setThreadName(Thread.currentThread().getName());
+                    firstAccessPresenterImp.insertFirstAccessTime(fristAccessEntity);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }).start();
+
+
     }
 
     @Override

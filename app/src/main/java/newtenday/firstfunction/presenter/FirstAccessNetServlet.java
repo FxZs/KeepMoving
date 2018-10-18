@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class FirstAccessNetServlet implements FirstAccessTimePresenter{
-    private static String url="http://192.168.8.222:8088/";
+
     @Override
     public void insertFirstAccessTime(FristAccessEntity fristAccessEntity) {
         Map<String,String> map=new HashMap<>();
@@ -34,7 +34,7 @@ public class FirstAccessNetServlet implements FirstAccessTimePresenter{
         map.put("threadName",fristAccessEntity.getThreadName());
         map.put("whichPage",fristAccessEntity.getWhichPage());
         NewTenHttp newTenHttp=new NewTenHttp();
-        newTenHttp.insert(map,url);
+        newTenHttp.insert(map);
     }
 
     @Override

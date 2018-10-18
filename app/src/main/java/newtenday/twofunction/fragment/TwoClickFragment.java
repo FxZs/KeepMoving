@@ -86,30 +86,35 @@ public class TwoClickFragment extends Fragment implements TwoClickView{
        return view;
     }
     private void insertClickData() {
-        TwoClickEntity twoClickEntity=new TwoClickEntity();
-        long four_time,now_time,suijitime;
-        Random random=new Random();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Calendar c=Calendar.getInstance();
-        c.add(Calendar.DAY_OF_MONTH,-120);
-        try {
-            four_time=sdf.parse(sdf.format(c.getTime())).getTime();//四个月前的毫秒值
-             now_time=System.currentTimeMillis()-four_time;
-            suijitime= (long) (four_time+Math.random()*now_time);
-            twoClickEntity.setWhatClickTime(sdf.format(new Date(suijitime)));
-            twoClickEntity.setTestUser(user_name[random.nextInt(10)]);
-             twoClickEntity.setPhoneType(phonetype[random.nextInt(8)]);
-             twoClickEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
-             twoClickEntity.setWhichThread(Thread.currentThread().getName());
-             twoClickEntity.setWhichPage(context.getPackageName());
-             twoClickEntity.setWhichMethod("insertClickData");
-             twoClickEntity.setBtnText(two_btn.getText().toString());
-             twoClickEntity.setWhereBtn(two_btn.getId()+"");
-             twoClickPresenterImp.insertTwoClickPresnter(twoClickEntity);
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               TwoClickEntity twoClickEntity=new TwoClickEntity();
+               long four_time,now_time,suijitime;
+               Random random=new Random();
+               SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+               Calendar c=Calendar.getInstance();
+               c.add(Calendar.DAY_OF_MONTH,-120);
+               try {
+                   four_time=sdf.parse(sdf.format(c.getTime())).getTime();//四个月前的毫秒值
+                   now_time=System.currentTimeMillis()-four_time;
+                   suijitime= (long) (four_time+Math.random()*now_time);
+                   twoClickEntity.setWhatClickTime(sdf.format(new Date(suijitime)));
+                   twoClickEntity.setTestUser(user_name[random.nextInt(10)]);
+                   twoClickEntity.setPhoneType(phonetype[random.nextInt(8)]);
+                   twoClickEntity.setWhichSystem(phonesystem[random.nextInt(7)]);
+                   twoClickEntity.setWhichThread(Thread.currentThread().getName());
+                   twoClickEntity.setWhichPage(context.getPackageName());
+                   twoClickEntity.setWhichMethod("insertClickData");
+                   twoClickEntity.setBtnText(two_btn.getText().toString());
+                   twoClickEntity.setWhereBtn(two_btn.getId()+"");
+                   twoClickPresenterImp.insertTwoClickPresnter(twoClickEntity);
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+               } catch (ParseException e) {
+                   e.printStackTrace();
+               }
+           }
+       }).start();
 
     }
 
